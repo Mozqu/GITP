@@ -1,0 +1,2 @@
+module RePostsHelper
+end
