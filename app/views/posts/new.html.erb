@@ -1,4 +1,4 @@
-<%= form_tag("posts/create") do %>
+<%= form_tag("/posts/create",{multipart: true}) do %>
 
 <div class="post_form">
   <p>内容</p>
@@ -8,7 +8,6 @@
   <input type="file" name="image2">
   <input type="file" name="image3">
   <input type="file" name="image4">
-
   <input type="submit">
 </div>
 
