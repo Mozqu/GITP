@@ -1,8 +1,8 @@
 
-<div class="show-container">
+<div class="image show-container">
   <% if @post.image_name1 %>
   <img src="<%= "/post_images/#{@post.image_name1}" %>">
-
+  <% end %>
   <div class="sentence-wrapper">
     <div class="user-info">
       <p><%= @post.user.name %> </p>
@@ -14,6 +14,9 @@
       <span class="fa fa-comment"></span>
     </div>
   </div>
-  <% else %>
+  
+  <div class="">
+
+  </div>
 
 </div>

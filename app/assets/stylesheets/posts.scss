@@ -7,19 +7,26 @@
   min-height: 0px;
   background-color: #9d9d9d;
   margin: 10px;
-  position: relative;
+  min-height: 200px;
+
 }
 .show-container img {
   width: 100%;
+
   position: absolute;
-  position: relative;
+
   display: block;
   z-index: 1;
+}
+.sentence-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 .user-info {
   width: 100%;
   height: 36px;
-  position: absolute;
   top: 0px;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.35);
@@ -41,7 +48,7 @@
   display: flex;
   justify-content: stretch;
   flex-wrap: wrap;
-  position: absolute;
+
 
   bottom: 0;
   z-index: 2;
