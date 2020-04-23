@@ -42,11 +42,7 @@ class PostsController < ApplicationController
       end
 
       if @post.save
-<<<<<<< HEAD
-        redirect_to("/posts/#{@post.user_id}")
-=======
         redirect_to("/posts/#{@post.id}")
->>>>>>> master
       else
         render("posts/new")
       end
@@ -55,8 +51,6 @@ class PostsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
   def edit
     @post = Post.find_by(id: params[:id])
   end
@@ -65,6 +59,5 @@ class PostsController < ApplicationController
 
   end
 
->>>>>>> master
 
 end

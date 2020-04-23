@@ -1,14 +1,8 @@
 class ApplicationController < ActionController::Base
-<<<<<<< HEAD
-   before_action :set_current_user
-
-  def set_current_user
-=======
   before_action :set_current_user
 
   def set_current_user
     session[:user_id] = 1
->>>>>>> master
     @current_user = User.find_by(id: session[:user_id])
   end
 
