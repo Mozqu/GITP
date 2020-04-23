@@ -17,3 +17,10 @@
       margin: 0px;
       background-color: #232f34;
 }
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}

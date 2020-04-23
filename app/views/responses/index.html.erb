@@ -1,2 +1,34 @@
-<h1>Responses#index</h1>
-<p>Find me in app/views/responses/index.html.erb</p>
+<% @posts.each do |post| %>
+<div class="show-container">
+  <div class="user-info">
+    <img class="user-image" src="/user_images/5_1">
+    <p><%= post.user.name %> </p>
+    <p1><%= post.created_at %></p1>
+  </div>
+
+  <div class="post-images">
+    <% if post.image_name2 && post.image_name1 %>
+    <div class="image-division left">
+      <img class="plural-image" src="<%= "/post_images/#{post.image_name1}" %>">
+      <% if post.image_name3 %>
+      <img class="plural-image" src="<%= "/post_images/#{post.image_name3}" %>">
+      <% end %>
+    </div>
+    <div class="image-division right">
+      <img class="plural-image" src="<%= "/post_images/#{post.image_name2}" %>">
+      <% if post.image_name4 %>
+      <img class="plural-image" src="<%= "/post_images/#{post.image_name4}" %>">
+      <% end %>
+    </div>
+    <% elsif post.image_name1 %>
+    <img class="single-image" src="<%= "/post_images/#{post.image_name1}" %>">
+    <% end %>
+
+  </div>
+
+  <div class="post-info">
+    <p>Your whole family gets to see everything you currently  have open/downloaded in your computer and phone, what is the worst thing they’d find?</p>
+    <span class="fa fa-heart"></span>
+    <span class="fa fa-comment"></span>
+  </div>
+</div>
