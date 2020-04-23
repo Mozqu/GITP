@@ -1,0 +1,47 @@
+
+
+<%= form_tag("/posts/update") do %>
+<div class="show-container">
+  <div class="user-info">
+    <object>
+      <%= link_to("/users/#{@post.user_id}",{class: "user-image-link"}) do %>
+      <img class="user-image" src="/user_images/5_1">
+      <% end %>
+    </object>
+    <object><p><%= link_to("#{@post.user.name}", "/users/#{@post.user_id}") %> </p></object>
+    <p1><%= @post.created_at %></p1>
+  </div>
+
+
+  <div class="post-images">
+
+    <% if @post.image_name1 %>
+    <label for="image1"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name1}" %>"></label>
+    <input type="checkbox" name="remove1" id="image1" class="un-show">
+    <% end %>
+    <% if @post.image_name2 %>
+    <label for="image2"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name2}" %>"></label>
+    <input type="checkbox" name="remove2" id="image2">
+    <% end %>
+    <% if @post.image_name3 %>
+    <label for="image3"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name3}" %>"></label>
+    <input type="checkbox" name="remove3" id="image3">
+    <% end %>
+    <% if @post.image_name4 %>
+    <label for="image4"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name4}" %>"></label>
+    <input type="checkbox" name="remove4" id="image4">
+    <% end %>
+
+  </div>
+
+  <div class="post-info">
+    <textarea class="edit-content" name="content" rows="8" cols="80"><%= @post.content  %></textarea>
+
+    <% if @post.user_id == @current_user.id %>
+    <%= link_to("/posts/#{@post.id}/edit") do %>
+    <span class="fa fa-edit">完了</span>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %>
