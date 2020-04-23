@@ -20,12 +20,21 @@ Rails.application.routes.draw do
 
 
 #ユーザー登録系　by　Motoya#
+  post "users/:id/update" => "users#update"
+  get "users/:id/edit" => "users#edit"
 
- get 'signup' => 'users#new'
- post 'users/create' => 'users#create'
- get "users/index" => "users#index"
- get "users/:id" => "users#show"
+  post "users/create" => "users#create"
 
+  get "signup" => "users#new"
+
+  get "users/index" => "users#index"
+  
+  get "users/:id" => "users#show"
+
+  post "login" => "users#login"
+  post "logout" => "users#logout"
+  get "login" => "users#login_form"
+  get "users/:id/likes" => "users#likes"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
