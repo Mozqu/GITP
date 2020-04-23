@@ -16,20 +16,32 @@
   <div class="post-images">
 
     <% if @post.image_name1 %>
-    <label for="image1"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name1}" %>"></label>
-    <input type="checkbox" name="remove1" id="image1" class="un-show">
+    <div class="edit-image">
+      <input type="checkbox" name="remove1" id="image1" class="un-show">
+      <label class="image1" for="image1"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name1}" %>"></label>
+      <span class="fa fa-trash-alt" ></span>
+    </div>
     <% end %>
     <% if @post.image_name2 %>
-    <label for="image2"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name2}" %>"></label>
-    <input type="checkbox" name="remove2" id="image2">
+    <div class="edit-image">
+      <input type="checkbox" name="remove2" id="image2" class="un-show">
+      <label class="image2" for="image2"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name2}" %>"></label>
+      <span class="fa fa-trash-alt" ></span>
+    </div>
     <% end %>
     <% if @post.image_name3 %>
-    <label for="image3"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name3}" %>"></label>
-    <input type="checkbox" name="remove3" id="image3">
+    <div class="edit-image">
+      <input type="checkbox" name="remove3" id="image3" class="un-show">
+      <label class="image3" for="image3"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name3}" %>"></label>
+      <span class="fa fa-trash-alt" ></span>
+    </div>
     <% end %>
     <% if @post.image_name4 %>
-    <label for="image4"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name4}" %>"></label>
-    <input type="checkbox" name="remove4" id="image4">
+    <div class="edit-image">
+      <input type="checkbox" name="remove4" id="image4" class="un-show">
+      <label class="image4" for="image4"><img class="edit-single-image" src="<%= "/post_images/#{@post.image_name4}" %>"></label>
+      <span class="fa fa-trash-alt" ></span>
+    </div>
     <% end %>
 
   </div>
