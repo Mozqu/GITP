@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'boards/index'
 
   get 'followers/index'
+  post 'followers/:id/create' => 'followers#create'
 
   get 'likes/index'
 
