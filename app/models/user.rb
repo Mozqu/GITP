@@ -14,5 +14,6 @@ class User < ApplicationRecord
 
   def follow_count
     return Follower.where(follower_id: self.id).count
+  end
 
 end
