@@ -4,7 +4,7 @@
   <div class="user-info">
     <object>
       <%= link_to("/users/#{post.user_id}",{class: "user-image-link"}) do %>
-      <img class="user-image" src="/user_images/5_1">
+      <img class="user-image" src="<%= "/user_images/#{post.user.image_name}" %>">
       <% end %>
 
     </object>

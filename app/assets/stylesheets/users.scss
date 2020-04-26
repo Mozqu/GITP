@@ -1,6 +1,143 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//文岩
+.follow-wrapper {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  height: 40px;
+  background-color: gray;
+}
+
+.follow-btn {
+  height: 30px;
+  background-color: #ff4500;
+  font-size: 17px;
+  line-height: 30px;
+  border-radius: 15px;
+  padding: 0 5px;
+  color: #000;
+}
+
+.follow-wrapper p {
+  padding: 0;
+  margin: 0;
+}
+
+.show-center{
+  width: 600px;
+  margin: 0 auto;
+}
+.introduce-wrapper{
+display: flex;
+flex-wrap: wrap;
+//height: ;
+background-color: #232f34;
+color: white;
+padding-top: 15px;
+}
+
+.my{
+padding: 5px 15px;
+width: 50%;
+}
+
+.my p{
+margin: 5px 0;
+display: block
+}
+
+.my info{
+display: flex;
+}
+.user_info p{
+
+}
+.profile-image {
+  width: 30%;
+}
+.profile-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+}
+
+.hobby textarea{
+width: 100%;
+height: 60px;
+border-radius: 10px;
+padding: 10px;
+background-color: #d9d9d9;
+}
+
+
+/*ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆå…¨ä½“ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
+.tabs {
+margin-top: 50px;
+padding-bottom: 40px;
+background-color: #232f34;
+margin: 0;
+//box-sizing: border-box;
+width: 600px;
+}
+
+/*ã‚¿ãƒ–ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
+.tab_item {
+width: calc(100%/3);
+height: 50px;
+border-bottom: 3px solid orange;
+background-color: #d9d9d9;
+line-height: 50px;
+font-size: 16px;
+text-align: center;
+color: black;
+display: block;
+float: left;
+text-align: center;
+font-weight: bold;
+transition: all 0.2s ease;
+}
+.tab_item:hover {
+opacity: 0.75;
+}
+
+/*ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã‚’å…¨ã¦æ¶ˆã™*/
+input[name="tab_item"] {
+display: none;
+}
+
+/*ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆã®ä¸­èº«ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
+.tab_content {
+display: none;
+//spadding: 10px;
+clear: both;
+overflow: hidden;
+//background-color: orange;
+}
+.tab_content show-container {
+  width: 100%;
+}
+
+
+/*é¸æŠžã•ã‚Œã¦ã„ã‚‹ã‚¿ãƒ–ã®ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã®ã¿ã‚’è¡¨ç¤º*/
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content {
+display: block;
+}
+
+/*é¸æŠžã•ã‚Œã¦ã„ã‚‹ã‚¿ãƒ–ã®ã‚¹ã‚¿ã‚¤ãƒ«ã‚’å¤‰ãˆã‚‹*/
+.tabs input:checked + .tab_item {
+background-color: orange;
+color: #fff;
+}
+
+
 .follow-recomend {
   background-color: skyblue;
   color: white;
@@ -140,7 +277,7 @@
   margin-bottom: 15px;
 }
 
-/* ここからhome.scssをコピペ編集*/
+/* ここからhome.scssをコピペ編集
 
 * {
   box-sizing: border-box;
@@ -176,9 +313,9 @@ input {
 form input[type="submit"] {
   border: none;
   cursor: pointer;
-}
+}*/
 
-/* 共通レイアウト ================================ */
+/* 共通レイアウト ================================
 body {
   color: #2d3133;
   background-color: #232f34;
@@ -201,9 +338,9 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   clear: both;
-}
+}*/
 
-/* ヘッダー ================================ */
+/* ヘッダー ================================
 header {
   height: 64px;
   position: absolute;
@@ -254,9 +391,9 @@ header {
   color: white;
   margin: 0;
   font-size: 13px;
-}
+}*/
 
-/* top ================================ */
+/* top ================================
 .top-main {
   padding: 200px 0 100px;
   text-align: center;
@@ -271,11 +408,11 @@ header {
   background-position: center 50%;
   background-size: cover;
   background-image: url("/top.jpg");
-}
+}*/
 
-.top-message {
-  position: relative;
-}
+//.top-message {
+  //position: relative;
+//}
 
 .top-main h2 {
   font-size: 70px;

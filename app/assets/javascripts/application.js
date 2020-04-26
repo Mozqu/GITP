@@ -14,3 +14,30 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
+$(function() {
+
+  $('.user-info').hover(
+    function(){
+      var $intro = $(this).find('.user-introduce');
+      var pos = $(this).offset();
+      var posT = pos.top + 40;
+      var posL = pos.left - 100;
+      $intro.css('top', posT);
+      $intro.css('left', posL);
+      sethover = setTimeout(function(){
+               $intro.find('.TOP').text(posT);
+               $intro.find('.LEFT').text(posL);
+               $intro.fadeIn(300);
+		       },300);
+
+    },
+    function(){
+      var $intro = $(this).find('.user-introduce');
+      $intro.fadeOut(500);
+      clearTimeout(sethover,1000);
+    }
+  );
+
+});

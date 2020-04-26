@@ -24,3 +24,30 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.main-content-wrapper {
+  width: 100%;
+  padding: 0 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+header {
+  height: 30px;
+  position: sticky;
+  top: 0;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0 0 6px 6px;
+  z-index: 100;
+}
+
+header h1{
+  font-size: 18px;
+}
+
+header input {
+  height: 20px;
+}

@@ -1,44 +1,120 @@
-<% if Follower.find_by(user_id:@user.id, follower_id: @current_user.id) == nil %>
-<div class="follow-recomend">
-  <p>このユーザーをフォローしますか？</p>
-  <%= link_to("/followers/#{@user.id}/create", {method: :post}) do %>
-  <div class="follow-recomend-btn">
-    <span class="fa fa-plus"></span>
-    フォロー
+<% if Follower.find_by(user_id: @user.id, follower_id: @current_user.id) == nil or @current_user.id != @user.id %>
+<div class="follow-wrapper">
+  <p>このユーザーフォローしますか？</p>
+  <%= link_to("/followers/#{@user.id}/create",{method: :post}) do %>
+  <div class="follow-btn">
+    + Follow
   </div>
   <% end %>
 </div>
 <% end %>
-<div class="main user-show">
-  <div class="container">
-    <div class="user">
-      <img src="<%= "/user_images/#{@user.image_name}" %>">
-      <h2><%= @user.name %></h2>
-      <p><%= @user.email %></p>
-      <% if @user.id == @current_user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <% end %>
-      <p>フォロー　<%= @user.follow_count %></p>
-      <p>フォロワー　<%= @user.follower_count %></p>
-    </div>
+<div class="show-center">
 
-    <ul class="user-tabs">
-      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
-      <li><%= link_to("いいね", "/users/#{@user.id}/likes") %></li>
-    </ul>
+<div class="introduce-wrapper">
+  <div class="profile-image">
+    <img src="<%= "/user_images/#{@user.image_name}" %>" alt="">
 
-    <% @user.posts.each do |post| %>
-      <div class="posts-index-item">
-        <div class="post-left">
-          <img src="<%= "/user_images/#{post.user.image_name}" %>">
-        </div>
-        <div class="post-right">
-          <div class="post-user-name">
-            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
-          </div>
-          <%= link_to(post.content, "/posts/#{post.id}") %>
-        </div>
-      </div>
-    <% end %>
   </div>
+  <div class="my info">
+
+
+    <div class="user_info">
+      <p>name: <%= @user.name %></p>
+      <p>id: <%= @user.id %></p>
+      <p>フォロー <%= @user.follow_count %> フォロワー <%= @user.follower_count %></p>
+      <div class="introduce">
+        <p>はじめまして</p>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="my hobby">
+    <p>i'm</p>
+    <textarea></textarea>
+    <p>like</p>
+    <textarea></textarea>
+  </div> -->
+
+
+</div>
+
+<div class="tabs">
+  <input id="all" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="all">つぶやき</label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming">書き込み</label>
+  <input id="design" type="radio" name="tab_item">
+  <label class="tab_item" for="design">メディア</label>
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+
+      <% @user.posts.each do |post|%>
+      <%= link_to("/posts/#{post.id}") do %>
+      <div class="show-container">
+
+        <div class="user-info">
+          <object>
+            <%= link_to("/users/#{post.user_id}",{class: "user-image-link"}) do %>
+            <img class="user-image" src="<%= "/user_images/#{post.user.image_name}" %>">
+            <% end %>
+          </object>
+          <object><p class="modal-hover"><%= link_to("#{post.user.name}", "/users/#{post.user_id}") %> </p></object>
+          <p1><%= post.created_at %></p1>
+
+          <div class="user-introduce">
+            <div class="user-info">
+              <img class="modal user-image" src="<%= "/user_images/#{post.user.image_name}" %>">
+              <div class="column">
+                <p><%= post.user.name %></p>
+                <p2>フォロー <%= post.user.follow_count %> フォロワー <%= post.user.follower_count %></p2>
+              </div>
+            </div>
+            <p>はじめまして</p>
+            <p class="TOP"></p>
+            <p class="LEFT"></p>
+
+          </div>
+        </div>
+
+        <div class="post-images">
+          <% if post.image_name2 && post.image_name1 %>
+          <div class="image-division left">
+            <img class="plural-image" src="<%= "/post_images/#{post.image_name1}" %>">
+            <% if post.image_name3 %>
+            <img class="plural-image" src="<%= "/post_images/#{post.image_name3}" %>">
+            <% end %>
+          </div>
+          <div class="image-division right">
+            <img class="plural-image" src="<%= "/post_images/#{post.image_name2}" %>">
+            <% if post.image_name4 %>
+            <img class="plural-image" src="<%= "/post_images/#{post.image_name4}" %>">
+            <% end %>
+          </div>
+          <% elsif post.image_name1 %>
+          <img class="single-image" src="<%= "/post_images/#{post.image_name1}" %>">
+          <% end %>
+        </div>
+
+        <div class="post-info">
+          <p><%= post.content %></p>
+          <span class="fa fa-heart"></span>
+          <span class="fa fa-comment"></span>
+        </div>
+
+      </div>
+      <% end %>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">プログラミングの内容がここに入ります</p>
+    </div>
+  </div>
+  <div class="tab_content" id="design_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">デザインの内容がここに入ります</p>
+    </div>
+  </div>
+</div>
 </div>
