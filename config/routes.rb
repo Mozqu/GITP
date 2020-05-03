@@ -1,11 +1,30 @@
 Rails.application.routes.draw do
+
+  get 'homes/index' => 'homes#index'
+
+
+  post 'board_likes/:id/create_like' => 'board_likes#create_like'
+  post 'board_likes/:id/destroy_like' => 'board_likes#destroy_like'
+  post 'board_likes/:id/create_dislike' => 'board_likes#create_dislike'
+  post 'board_likes/:id/destroy_dislike' => 'board_likes#destroy_dislike'
+
+
   get 'comments/index'
 
   get 're_posts/index'
 
   get 'responses/index'
+  post 'responses/:id/create' => 'responses#create'
+  post 'response/:id/destroy' => 'responses#destroy'
 
-  get 'boards/index'
+  get 'boards/index' => 'boards#index'
+  get 'boards/new' => 'boards#new'
+  get 'boards/post_test' => 'boards#post_test'
+  get 'boards/:id/edit' => 'boards#edit'
+  get 'boards/:id' => 'boards#show'
+  post 'boards/create' => 'boards#create'
+  post 'boards/update' => 'boards#update'
+  post 'boards/:id/destroy' => 'boards#destroy'
 
   get 'followers/index'
   post 'followers/:id/create' => 'followers#create'
@@ -17,7 +36,8 @@ Rails.application.routes.draw do
 
   get 'posts/index'
   get 'posts/new' => 'posts#new'
-  get 'posts/image_index' => 'post#image_index'
+  get 'posts/post_test' => 'posts#post_test'
+  get 'posts/image_index' => 'posts#image_index'
   get 'posts/:id/edit' => 'posts#edit'
   get 'posts/:id' => 'posts#show'
   post 'posts/create' => 'posts#create'
@@ -33,9 +53,9 @@ Rails.application.routes.draw do
   get "signup" => "users#new"
   get "users/index" => "users#index"
   get "users/:id" => "users#show"
+  get "login_form" => "users#login_form"
   post "login" => "users#login"
   post "logout" => "users#logout"
-  get "login" => "users#login_form"
   get "users/:id/likes" => "users#likes"
 
 #likes　by Motoya#

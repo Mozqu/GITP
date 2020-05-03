@@ -2,26 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.show-container {
-  width: 600px;
+
+
+
+
+.grid-item {
+     width: 140px;
+     margin:5px;
+     box-sizing:border-box;
+     padding:2rem;
+     font-size:2rem;
+     background: blue;
+     border-radius:6px;
+}
+.grid-item--large {
+     width: 140px;
+     height: 300px;
+}
+.post-item {
+  width: 300px;
   background-color: #fff;
-  margin: 10px 0;
+  margin: 0 6px 6px 0;
   min-height: 60px;
-  //max-height: 600px;
-  padding: 0 12px 0 12px;
+
   box-sizing: border-box;
-  transition: background-color 0.3s;
+  //transition: background-color 0.3s;
 }
-.show-container:hover {
-  background-color: rgba(250, 250, 250, 0.85)
+.post-item:hover {
+  background-color: rgba(250, 250, 250, 0.85);
 }
-.user-info {
+.post-link {
+  margin: 0;
+}
+.post-top {
   display: flex;
   align-items: center;
   height: 42px;
-  //z-index: 3;
-  //position: relative;
-  z-index: 100;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.post-sentence p1 {
+  opacity: 0.7;
+  font-size: 10px;
+  margin-bottom: 6px;
 }
 .user-image {
   margin-right: 10px;
@@ -29,85 +52,47 @@
   width: 30px;
   border-radius: 5px;
 }
+
 .user-image-link {
   height: 30px;
   display: block;
 }
-.user-info p {
-  margin-right: 10px;
-}
-.user-info p1{
-  margin-left: auto;
-  opacity: 0.5;
-  font-size: 14px;
-}
-//モーダル
-.user-introduce {
-  width: 200px;
-  //height: 150px;
-  display: none;
-  position: absolute;
-
-  padding: 5px;
-  border-radius: 5px;
-  background-color: white;
-  z-index: 150;
-  box-shadow: 1px 1px 3px 0px;
-}
-.introduce-active {
-  display: block;
-}
-.user-introduce p {
-  font-size: 14px;
-}
-.user-introduce p2 {
-  font-size: 10px;
-}
-.column {
-  display: flex;
-  flex-direction: column;
-
-}
-
 
 .post-images {
-  display: flex;
   width: 100%;
-  flex-wrap:wrap;
-  justify-content: space-between;
-  flex-basis: auto;
-  //height: 476px;
-}
-.image-division {
-  width: 50%;
-  //height: 270px;
-  //position: relative;
-  display: flex;
-  flex-direction: column;
-  //z-index: 1;
+  overflow: hidden;
+  max-height: 500px;
 
-  //max-height: 270;
 }
-.plural-image {
-  max-width: 100%;
+.post-images img {
+  width: 100%;
+}
+.item-open{
+  max-height: none;
+  overflow: visible;
+}
+
+.post-sentence {
+  max-height: 140px;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 10px 10px 10px;
   box-sizing: border-box;
-  //z-index: 0;
-  padding: 3px;
-
-}
-.single-image {
-  width:auto;
-  height:auto;
-  max-width:100%;
-  //max-height: 476px;
-}
-.post-info {
-  margin-top: 6px;
-  //z-index: 3;
-  width: 100%;
-}
-.post-info p {
   border-bottom: 1px solid #999;
+}
+
+.post-bottom {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.post-bottom span {
+  color: #9d9d9d;
+  margin-right: 30px;
+}
+
+.post-bottom span {
+  padding-left: 10px;
 }
 //編集ページ
 .edit-content {
@@ -195,7 +180,7 @@
   margin-left: 10px;
   color: gray;
 }
-.image show-container p {
+.image post-item p {
   color: #fff;
   margin: 0;
 }

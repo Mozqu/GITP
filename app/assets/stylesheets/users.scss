@@ -11,7 +11,6 @@
   height: 40px;
   background-color: gray;
 }
-
 .follow-btn {
   height: 30px;
   background-color: #ff4500;
@@ -21,23 +20,26 @@
   padding: 0 5px;
   color: #000;
 }
-
 .follow-wrapper p {
   padding: 0;
   margin: 0;
 }
 
-.show-center{
-  width: 600px;
-  margin: 0 auto;
+
+#show-center{
+  max-width: 100%;
+  padding: 6px;
 }
 .introduce-wrapper{
 display: flex;
 flex-wrap: wrap;
 //height: ;
-background-color: #232f34;
+//background-color: #232f34;
 color: white;
 padding-top: 15px;
+box-sizing: border-box;
+width: 600px;
+margin: 0 auto;
 }
 
 .my{
@@ -79,11 +81,13 @@ background-color: #d9d9d9;
 /*ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆå…¨ä½“ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
 .tabs {
 margin-top: 50px;
+padding-top: 10px;
 padding-bottom: 40px;
-background-color: #232f34;
+//background-color: #232f34;
 margin: 0;
 //box-sizing: border-box;
-width: 600px;
+//width: 600px;
+width: 100%;
 }
 
 /*ã‚¿ãƒ–ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
@@ -101,9 +105,17 @@ float: left;
 text-align: center;
 font-weight: bold;
 transition: all 0.2s ease;
+position: sticky;
+top: 35px;
+z-index: 10;
 }
 .tab_item:hover {
 opacity: 0.75;
+}
+
+//tabsのボーダー用
+.tabs-border {
+
 }
 
 /*ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã‚’å…¨ã¦æ¶ˆã™*/
@@ -114,10 +126,12 @@ display: none;
 /*ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆã®ä¸­èº«ã®ã‚¹ã‚¿ã‚¤ãƒ«*/
 .tab_content {
 display: none;
+display: flex;
 //spadding: 10px;
 clear: both;
 overflow: hidden;
 //background-color: orange;
+justify-content: flex-start;
 }
 .tab_content show-container {
   width: 100%;

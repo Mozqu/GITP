@@ -1,0 +1,148 @@
+
+<div id="show-center">
+
+<% @all_items.each do |item| %>
+  <div class="item">
+
+  <% if item.table_name == "boards" %>
+  <!-- board -->
+  <div class="board-item">
+    <div class="board-top">
+
+        <%= link_to("/users/#{item.user_id}",{class: "user-image-link"}) do %>
+        <img class="user-image" src="<%= "/user_images/#{item.user.image_name}" %>">
+        <% end %>
+        <p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p>
+
+    </div>
+    <div class="board-middle">
+      <p><%= item.content %></p>
+    </div>
+    <div class="board-images">
+      <img src="<%= "/board_images/#{item.image_name1}" %>">
+
+    </div>
+    <div class="board-bottom">
+      <div class="likes-dislikes">
+        <% if BoardLike.find_by(user_id: @current_user.id, board_id: item.id, points: 1) %>
+          <%= link_to("/board_likes/#{item.id}/destroy_like", {method: :post}) do %>
+          <span class="fa fa-arrow-up red"></span>
+          <% end %>
+        <% else %>
+          <%= link_to("/board_likes/#{item.id}/create_like",{method: :post}) do %>
+          <span class="fa fa-arrow-up"></span>
+          <% end %>
+        <% end %>
+
+        <p><%= item.total_likes %></p>
+
+        <% if BoardLike.find_by(user_id: @current_user.id, board_id: item.id, points: -1) %>
+          <%= link_to("/board_likes/#{item.id}/destroy_dislike",{method: :post}) do %>
+          <span class="fa fa-arrow-down blue"></span>
+          <% end %>
+        <% else %>
+          <%= link_to("/board_likes/#{item.id}/create_dislike",{method: :post}) do %>
+          <span class="fa fa-arrow-down"></span>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="reponses-count">
+        <span class="far fa-comment"></span>
+        <p><%= item.responses.count %></p>
+      </div>
+
+    </div>
+
+    <div class="unshow">
+      <% item.responses.each do |response| %>
+      <div class="response-item">
+
+        <div class="response-top">
+          <object>
+            <%= link_to("/users/#{response.user_id}",{class: "user-image-link"}) do %>
+            <img class="user-image" src="<%= "/user_images/#{response.user.image_name}" %>">
+            <% end %>
+          </object>
+          <object><p><%= link_to("#{response.user.name}", "/users/#{response.user_id}") %> </p></object>
+          <p1><%= response.created_at %></p1>
+        </div>
+        <!--
+        <div class="response-images">
+          <% if response.image_name1 %>
+          <img src="<%= "/post_images/#{response.image_name1}" %>">
+          <% end %>
+          <% if response.image_name2 %>
+          <img src="<%= "/post_images/#{response.image_name2}" %>">
+          <% end %>
+          <% if response.image_name3 %>
+          <img src="<%= "/post_images/#{response.image_name3}" %>">
+          <% end %>
+          <% if response.image_name4 %>
+          <img src="<%= "/post_images/#{response.image_name4}" %>">
+          <% end %>
+        </div>
+        -->
+        <div class="response-sentence">
+
+          <p><%= response.content %></p>
+        </div>
+        <div class="response-bottom">
+          <span class="fa fa-comment"></span>
+        </div>
+
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+  <% elsif item.table_name == "posts" %>
+  <!-- Post -->
+  <div class="post-item">
+    <div class="post-top">
+    <object>
+      <%= link_to("/users/#{item.user_id}",{class: "user-image-link"}) do %>
+      <img class="user-image" src="<%= "/user_images/#{item.user.image_name}" %>">
+      <% end %>
+    </object>
+
+    <object><p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p></object>
+    </div>
+    <div class="post-images">
+    <% if item.image_name1 %>
+    <img src="<%= "/post_images/#{item.image_name1}" %>">
+    <% end %>
+    <% if item.image_name2 %>
+    <img src="<%= "/post_images/#{item.image_name2}" %>">
+    <% end %>
+    <% if item.image_name3 %>
+    <img src="<%= "/post_images/#{item.image_name3}" %>">
+    <% end %>
+    <% if item.image_name4 %>
+    <img src="<%= "/post_images/#{item.image_name4}" %>">
+    <% end %>
+    </div>
+    <div class="post-sentence">
+    <p1><%= item.created_at %></p1>
+    <p><%= item.content %></p>
+    </div>
+    <div class="post-bottom">
+
+    <% if Like.find_by(user_id: @current_user.id, post_id: item.id) %>
+      <%= link_to("/likes/#{item.id}/destroy", {method: "post"}) do %>
+        <span id="like-btn-unlike" class="fa fa-heart"><%= item.likes_count %></span>
+      <% end %>
+    <% else %>
+      <%= link_to("/likes/#{item.id}/create", {method: "post"}) do %>
+        <span id="like-btn" class="fa fa-heart"><%= item.likes_count %></span>
+      <% end %>
+    <% end %>
+
+    <span class="fa fa-comment"></span>
+  </div>
+
+  </div>
+  <% end %>
+  </div>
+<% end %>
+
+</div>

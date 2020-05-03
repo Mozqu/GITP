@@ -16,28 +16,103 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+
+
+
 $(function() {
+  var flag = false;
+  $('.post-item').click(
+    function() {
 
-  $('.user-info').hover(
-    function(){
-      var $intro = $(this).find('.user-introduce');
-      var pos = $(this).offset();
-      var posT = pos.top + 40;
-      var posL = pos.left - 100;
-      $intro.css('top', posT);
-      $intro.css('left', posL);
-      sethover = setTimeout(function(){
-               $intro.find('.TOP').text(posT);
-               $intro.find('.LEFT').text(posL);
-               $intro.fadeIn(300);
-		       },300);
+      if (flag){
+        flag  = false;
+        $item = $(this).children('.post-images');
+        $item.css('maxHeight', '500px');
 
-    },
-    function(){
-      var $intro = $(this).find('.user-introduce');
-      $intro.fadeOut(500);
-      clearTimeout(sethover,1000);
+        var $grid = jQuery('#show-center').imagesLoaded(function(){
+        $grid.masonry({
+          itemSelector: '.item',
+          isFitWidth: true
+          });
+        });
+
+
+    }else {
+      flag = true;
+      $item = $(this).children('.post-images');
+      $item.css('maxHeight', 'none').height();
+      //$item.height(closeHeight).animate('height', openHeight);
+      //masonry
+
+      var $grid = jQuery('#show-center').imagesLoaded(function(){
+        $grid.masonry({
+            itemSelector: '.item',
+            isFitWidth: true
+          });
+        })
     }
-  );
+
+    });
+
+    $('.board-item').click(
+      function(){
+        if (flag){
+          flag = false;
+          $(this).children('.unshow').css("display", "none");
+          var $grid = jQuery('#show-center').imagesLoaded(function(){
+            $grid.masonry({
+                itemSelector: '.item',
+                isFitWidth: true
+              });
+            })//masonry
+        } else {
+          flag = true;
+          $(this).children('.unshow').css("display", "block");
+
+          var $grid = jQuery('#show-center').imagesLoaded(function(){
+            $grid.masonry({
+                itemSelector: '.item',
+                isFitWidth: true
+              });
+            })//masonry
+        }
+
+      }
+    )
 
 });
+
+
+
+
+/*
+$('.post-item').hover(
+    function(){
+      $item = $(this).children('.post-images');
+      closeHeight = $item.height();
+      openHeight = $item.css('maxHeight', 'none').height();
+      //$item.height(closeHeight).animate('height', openHeight);
+      //masonry
+
+      jQuery('#show-center').imagesLoaded(function(){
+        $grid.masonry({
+            itemSelector: '.post-item',
+            isFitWidth: true
+          });
+      });
+    },
+    function(){
+        //マウスアウト処
+        //現在のheight取得
+        $(this).children('.post-images').removeClass('item-open');
+
+        jQuery('#show-center').imagesLoaded(function(){
+        $grid.masonry({
+          itemSelector: '.post-item',
+          isFitWidth: true
+          });
+        });
+
+      }
+    );
+ */

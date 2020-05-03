@@ -6,14 +6,20 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="../app/assets/javascripts/masonry.pkgd.min.js"></script>-->
 
-    </script>
+
+
+
   </head>
 
   <body>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
     <header>
 
@@ -22,20 +28,26 @@
       <input type="text" name="" placeholder="検索" >
 
       <ul>
-
         <% if @current_user == nil %>
-        <li>SIGNUP</li>
-        <li>LOGIN</li>
+        <li><%= link_to("SIGNUP", "/signup") %></li>
+        <li><%= link_to("LOGIN", "/login_form") %></li>
         <% else %>
-        <li>LOGOUT</li>
+        <li><%= link_to("INDEX", "/posts/index") %></li>
+        <li><%= link_to("MYPAGE", "/users/#{@current_user.id}") %></li>
+        <li><%= link_to("LOGOUT", "/logout",{method: :post}) %></li>
         <% end %>
       </ul>
 
     </header>
     <div class="main-content-wrapper">
-
       <%= yield %>
     </div>
-    <script src="application.js"></script>
+    <script>
+    var $grid = jQuery('#show-center').imagesLoaded(function(){
+      $grid.masonry({
+        itemSelector: '.item'
+      });
+    });
+    </script>
   </body>
 </html>

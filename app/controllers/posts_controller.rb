@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     @post = Post.new(
       user_id: @current_user.id,
       content: params[:content],
+      table_name: "posts"
     )
     if @post.save
 
@@ -66,5 +67,12 @@ class PostsController < ApplicationController
     redirect_to("/posts/index")
   end
 
+  def image_index
+
+  end
+
+  def post_test
+    @posts = Post.all.order(created_at: :desc)
+  end
 
 end

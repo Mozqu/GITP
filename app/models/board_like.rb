@@ -1,2 +1,5 @@
 class BoardLike < ApplicationRecord
+
+
+
 end

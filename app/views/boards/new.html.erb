@@ -1,0 +1,13 @@
+<div class="show-center">
+
+  <%= form_tag("/boards/create",{multipart: true}) do %>
+  <p>title</p>
+  <input type="text" name="title" value="">
+  <p>内容</p>
+  <textarea name="content" rows="8" cols="80"></textarea>
+  <p>画像</p>
+  <input type="file" name="image">
+  <input type="submit">
+  <% end %>
+
+</div>
