@@ -10,12 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+
 //= require activestorage
-//= require turbolinks
-//= require_tree .
 //= require jquery
-//= require jquery_ujs
+//= require rails-ujs
+//= require_tree .
+
 
 
 
@@ -26,8 +26,10 @@ $(function() {
 
       if (flag){
         flag  = false;
-        $item = $(this).children('.post-images');
-        $item.css('maxHeight', '500px');
+        $itemImage = $(this).children('.post-images');
+        $itemImage.css('maxHeight', '500px');
+        $itemSentence = $(this).children('.post-sentence');
+        $itemSentence.css('maxHeight', '140px');
 
         var $grid = jQuery('#show-center').imagesLoaded(function(){
         $grid.masonry({
@@ -39,10 +41,10 @@ $(function() {
 
     }else {
       flag = true;
-      $item = $(this).children('.post-images');
-      $item.css('maxHeight', 'none').height();
-      //$item.height(closeHeight).animate('height', openHeight);
-      //masonry
+      $itemImage = $(this).children('.post-images');
+      $itemImage.css('maxHeight', 'none').height();
+      $itemSentence = $(this).children('.post-sentence');
+      $itemSentence.css('maxHeight', 'none').height();
 
       var $grid = jQuery('#show-center').imagesLoaded(function(){
         $grid.masonry({
@@ -78,41 +80,10 @@ $(function() {
         }
 
       }
-    )
+    )/*board-item*/
 
-});
-
-
-
-
-/*
-$('.post-item').hover(
-    function(){
-      $item = $(this).children('.post-images');
-      closeHeight = $item.height();
-      openHeight = $item.css('maxHeight', 'none').height();
-      //$item.height(closeHeight).animate('height', openHeight);
-      //masonry
-
-      jQuery('#show-center').imagesLoaded(function(){
-        $grid.masonry({
-            itemSelector: '.post-item',
-            isFitWidth: true
-          });
-      });
-    },
-    function(){
-        //マウスアウト処
-        //現在のheight取得
-        $(this).children('.post-images').removeClass('item-open');
-
-        jQuery('#show-center').imagesLoaded(function(){
-        $grid.masonry({
-          itemSelector: '.post-item',
-          isFitWidth: true
-          });
-        });
-
-      }
-    );
- */
+    $('#hash-input').chage(function(){
+      var val = $(this).val();
+      
+    });
+}); /*function*/

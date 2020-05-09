@@ -1,2 +1,109 @@
-<h1>Likes#index</h1>
-<p>Find me in app/views/likes/index.html.erb</p>
+
+
+<div class="post-item">
+  <!--<%= link_to("/posts/#{@post.id}") do %>-->
+  <div class="post-top">
+    <object>
+      <%= link_to("/users/#{@post.user_id}",{class: "user-image-link"}) do %>
+      <img class="user-image" src="<%= "/user_images/#{@post.user.image_name}" %>">
+      <% end %>
+    </object>
+    <object><p><%= link_to("#{@post.user.name}", "/users/#{@post.user_id}") %> </p></object>
+  </div>
+
+  <div class="post-images">
+    <% if @post.image_name1 %>
+    <img src="<%= "/post_images/#{@post.image_name1}" %>">
+    <% end %>
+    <% if @post.image_name2 %>
+    <img src="<%= "/post_images/#{@post.image_name2}" %>">
+    <% end %>
+    <% if @post.image_name3 %>
+    <img src="<%= "/post_images/#{@post.image_name3}" %>">
+    <% end %>
+    <% if @post.image_name4 %>
+    <img src="<%= "/post_images/#{@post.image_name4}" %>">
+    <% end %>
+  </div>
+
+  <div class="post-sentence">
+    <p1><%= @post.created_at %></p1>
+    <p><%= @post.content %></p>
+  </div>
+  <div class="post-bottom">
+
+    <div id="like-1">
+      <%= render partial: "like", locals: { item: @post } %>
+    </div>
+
+    <span class="fa fa-comment"></span>
+  </div>
+  <!--<% end %>-->
+</div>
+
+
+
+
+
+
+
+<!--
+<div class="show-container">
+  <div class="user-info">
+    <object>
+      <%= link_to("/users/#{@post.user_id}",{class: "user-image-link"}) do %>
+      <img class="user-image" src="/user_images/5_1">
+      <% end %>
+    </object>
+    <object><p><%= link_to("#{@post.user.name}", "/users/#{@post.user_id}") %> </p></object>
+    <p1><%= @post.created_at %></p1>
+  </div>
+
+
+  <div class="post-images">
+    <% if @post.image_name2 && @post.image_name1 %>
+    <div class="image-division left">
+      <img class="plural-image" src="<%= "/post_images/#{@post.image_name1}" %>">
+      <% if @post.image_name3 %>
+      <img class="plural-image" src="<%= "/post_images/#{@post.image_name3}" %>">
+      <% end %>
+    </div>
+    <div class="image-division right">
+      <img class="plural-image" src="<%= "/post_images/#{@post.image_name2}" %>">
+      <% if @post.image_name4 %>
+      <img class="plural-image" src="<%= "/post_images/#{@post.image_name4}" %>">
+      <% end %>
+    </div>
+    <% elsif @post.image_name1 %>
+    <img class="single-image" src="<%= "/post_images/#{@post.image_name1}" %>">
+    <% end %>
+
+  </div>
+
+  <div class="post-info">
+    <p><%= @post.content  %></p>
+
+
+    <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+      <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
+        <span id="like-btn-unlike" class="fa fa-heart"><%= @likes_count %></span>
+      <% end %>
+    <% else %>
+      <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+        <span id="like-btn" class="fa fa-heart"><%= @likes_count %></span>
+      <% end %>
+    <% end %>
+
+
+
+
+    <span class="fa fa-comment"></span>
+    <% if @post.user_id == @current_user.id %>
+    <%= link_to("/posts/#{@post.id}/destroy",{method: :post}) do %>
+    <span class="fa fa-trash-alt"></span>
+    <% end %>
+    <% end %>
+  </div>
+
+</div>
+-->

@@ -1,68 +1,74 @@
 class BoardLikesController < ApplicationController
+  before_action :set_board
+
   def create_like
-    @board = BoardLike.find_by(
+    @like = BoardLike.find_by(
       user_id: @current_user.id,
       board_id: params[:id]
     )
-    if @board
-      @board.destroy
+    if @like
+      @like.destroy
     end
-    @board = BoardLike.new(
+    @like = BoardLike.new(
       user_id: @current_user.id,
       board_id: params[:id],
       points: 1
     )
-    if @board.save
-      redirect_to("/boards/#{@board.board_id}")
-    else
-      render("/boards/#{params[:id]}")
-    end
-
+    @like.save
+    respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
   def destroy_like
-    @board = BoardLike.find_by(
+    @like = BoardLike.find_by(
       user_id: @current_user.id,
       board_id: params[:id],
       points: 1
     )
-    if @board.destroy
-      redirect_to("/boards/#{@board.board_id}")
-    else
-      render("/boards/#{params[:id]}")
-    end
+    @like.destroy
+    respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
   def create_dislike
-    @board = BoardLike.find_by(
+    @like = BoardLike.find_by(
       user_id: @current_user.id,
       board_id: params[:id]
     )
-    if @board
-      @board.destroy
+    if @like
+      @like.destroy
     end
-    @board = BoardLike.new(
+    @like = BoardLike.new(
       user_id: @current_user.id,
       board_id: params[:id],
       points: -1
     )
-    if @board.save
-      redirect_to("/boards/#{@board.board_id}")
-    else
-      render("/boards/#{params[:id]}")
-    end
+    @like.save
+    respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
   def destroy_dislike
-    @board = BoardLike.find_by(
+    @like = BoardLike.find_by(
       user_id: @current_user.id,
       board_id: params[:id],
       points: -1
     )
-    if @board.destroy
-      redirect_to("/boards/#{params[:id]}")
-    else
-      render("/boards/#{params[:id]}")
-    end
+    @like.destroy
+    respond_to do |format|
+       format.html
+       format.js
+     end
+  end
+
+  private
+  def set_board
+    @board = Board.find_by(id: params[:id])
   end
 end

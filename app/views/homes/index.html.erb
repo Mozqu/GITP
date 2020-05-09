@@ -23,9 +23,9 @@
 
     </div>
     <div class="board-bottom">
-      <div class="likes-dislikes">
+      <div class="up-down">
         <% if BoardLike.find_by(user_id: @current_user.id, board_id: item.id, points: 1) %>
-          <%= link_to("/board_likes/#{item.id}/destroy_like", {method: :post}) do %>
+          <%= link_to("/board_likes/#{item.id}/destroy_like", {method: :delete}) do %>
           <span class="fa fa-arrow-up red"></span>
           <% end %>
         <% else %>
@@ -37,7 +37,7 @@
         <p><%= item.total_likes %></p>
 
         <% if BoardLike.find_by(user_id: @current_user.id, board_id: item.id, points: -1) %>
-          <%= link_to("/board_likes/#{item.id}/destroy_dislike",{method: :post}) do %>
+          <%= link_to("/board_likes/#{item.id}/destroy_dislike",{method: :delete}) do %>
           <span class="fa fa-arrow-down blue"></span>
           <% end %>
         <% else %>
@@ -55,6 +55,7 @@
 
     <div class="unshow">
       <% item.responses.each do |response| %>
+
       <div class="response-item">
 
         <div class="response-top">
@@ -91,6 +92,10 @@
         </div>
 
       </div>
+      <% if response == item.responses[4] %>
+      <% break %>
+      <% end %>
+
       <% end %>
     </div>
 
@@ -126,16 +131,9 @@
     <p><%= item.content %></p>
     </div>
     <div class="post-bottom">
-
-    <% if Like.find_by(user_id: @current_user.id, post_id: item.id) %>
-      <%= link_to("/likes/#{item.id}/destroy", {method: "post"}) do %>
-        <span id="like-btn-unlike" class="fa fa-heart"><%= item.likes_count %></span>
-      <% end %>
-    <% else %>
-      <%= link_to("/likes/#{item.id}/create", {method: "post"}) do %>
-        <span id="like-btn" class="fa fa-heart"><%= item.likes_count %></span>
-      <% end %>
-    <% end %>
+      <div id="like-<%= item.id %>">
+        <%= render partial: "posts/like", locals: { item: item } %>
+      </div>
 
     <span class="fa fa-comment"></span>
   </div>

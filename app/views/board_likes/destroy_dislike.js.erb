@@ -1,0 +1,1 @@
+$("#board-like-<%= @board.id %>").html("<%= j(render partial: "boards/board_like", locals: { board: @board }) %>")

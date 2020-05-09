@@ -1,4 +1,6 @@
 class ResponsesController < ApplicationController
+  before_action :set_board
+
   def index
   end
 
@@ -8,10 +10,16 @@ class ResponsesController < ApplicationController
       board_id: params[:id],
       content: params[:content]
     )
-    if @response.save
-      redirect_to("/boards/#{@response.board_id}")
-    else
-      render("/boards/#{@response.board_id}")
-    end
+    @response.save
+    respond_to do |format|
+       format.html
+       format.js
+     end
   end
+
+  private
+  def set_board
+    @board = Board.find_by(id: params[:id])
+  end
+
 end

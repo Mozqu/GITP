@@ -32,7 +32,7 @@
         <li><%= link_to("SIGNUP", "/signup") %></li>
         <li><%= link_to("LOGIN", "/login_form") %></li>
         <% else %>
-        <li><%= link_to("INDEX", "/posts/index") %></li>
+        <li><%= link_to("INDEX", "/homes/index") %></li>
         <li><%= link_to("MYPAGE", "/users/#{@current_user.id}") %></li>
         <li><%= link_to("LOGOUT", "/logout",{method: :post}) %></li>
         <% end %>

@@ -1,0 +1,38 @@
+<% board.responses.each do |response| %>
+<div class="response-item">
+
+  <div class="response-top">
+    <object>
+      <%= link_to("/users/#{response.user_id}",{class: "user-image-link"}) do %>
+      <img class="user-image" src="<%= "/user_images/#{response.user.image_name}" %>">
+      <% end %>
+    </object>
+    <object><p><%= link_to("#{response.user.name}", "/users/#{response.user_id}") %> </p></object>
+  </div>
+  <!--
+  <div class="response-images">
+    <% if response.image_name1 %>
+    <img src="<%= "/post_images/#{response.image_name1}" %>">
+    <% end %>
+    <% if response.image_name2 %>
+    <img src="<%= "/post_images/#{response.image_name2}" %>">
+    <% end %>
+    <% if response.image_name3 %>
+    <img src="<%= "/post_images/#{response.image_name3}" %>">
+    <% end %>
+    <% if response.image_name4 %>
+    <img src="<%= "/post_images/#{response.image_name4}" %>">
+    <% end %>
+  </div>
+  -->
+
+  <div class="response-sentence">
+    <p1><%= response.created_at %></p1>
+    <p><%= response.content %></p>
+  </div>
+  <div class="response-bottom">
+    <span class="fa fa-comment"></span>
+  </div>
+
+</div>
+<% end %>

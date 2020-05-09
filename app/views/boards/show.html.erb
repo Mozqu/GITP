@@ -17,37 +17,19 @@
 
     </div>
     <div class="board-bottom">
-      <div class="likes-dislikes">
-        <% if BoardLike.find_by(user_id: @current_user.id, board_id: @board.id, points: 1) %>
-          <%= link_to("/board_likes/#{@board.id}/destroy_like", {method: :post}) do %>
-          <span class="fa fa-arrow-up red"></span>
-          <% end %>
-        <% else %>
-          <%= link_to("/board_likes/#{@board.id}/create_like",{method: :post}) do %>
-          <span class="fa fa-arrow-up"></span>
-          <% end %>
-        <% end %>
 
-        <p><%= @board.total_likes %></p>
-
-        <% if BoardLike.find_by(user_id: @current_user.id, board_id: @board.id, points: -1) %>
-          <%= link_to("/board_likes/#{@board.id}/destroy_dislike",{method: :post}) do %>
-          <span class="fa fa-arrow-down blue"></span>
-          <% end %>
-        <% else %>
-          <%= link_to("/board_likes/#{@board.id}/create_dislike",{method: :post}) do %>
-          <span class="fa fa-arrow-down"></span>
-          <% end %>
-        <% end %>
+      <div id="board-like-<%= @board.id %>" class="up-down">
+        <%= render partial: "boards/board_like", locals: { board: @board } %>
       </div>
+
       <div class="reponses-count">
         <span class="far fa-comment"></span>
-        <p><%= @board.responses.count %></p>
+        <p id="responses-count"><%= @board.responses.count %></p>
       </div>
 
     </div>
     <div class="send-response">
-      <%= form_tag("/responses/#{@board.id}/create") do %>
+      <%= form_tag "/responses/#{@board.id}/create", id: "send-response", remote: true do %>
       <textarea placeholder="書き込む" name="content" rows="5"></textarea>
       <div class="send-wrapper">
         <input id="send-btn" class="unshow"  type="submit">
@@ -56,45 +38,8 @@
       <% end %>
     </div>
   </div>
-  <div class="response-wrapper">
 
-    <% @board.responses.each do |response| %>
-    <div class="response-item">
-
-      <div class="response-top">
-        <object>
-          <%= link_to("/users/#{response.user_id}",{class: "user-image-link"}) do %>
-          <img class="user-image" src="<%= "/user_images/#{response.user.image_name}" %>">
-          <% end %>
-        </object>
-        <object><p><%= link_to("#{response.user.name}", "/users/#{response.user_id}") %> </p></object>
-      </div>
-      <!--
-      <div class="response-images">
-        <% if response.image_name1 %>
-        <img src="<%= "/post_images/#{response.image_name1}" %>">
-        <% end %>
-        <% if response.image_name2 %>
-        <img src="<%= "/post_images/#{response.image_name2}" %>">
-        <% end %>
-        <% if response.image_name3 %>
-        <img src="<%= "/post_images/#{response.image_name3}" %>">
-        <% end %>
-        <% if response.image_name4 %>
-        <img src="<%= "/post_images/#{response.image_name4}" %>">
-        <% end %>
-      </div>
-      -->
-      <div class="response-sentence">
-        <p1><%= response.created_at %></p1>
-        <p><%= response.content %></p>
-      </div>
-      <div class="response-bottom">
-        <span class="fa fa-comment"></span>
-      </div>
-
-    </div>
-    <% end %>
-
+  <div id="reponses-create" class="response-wrapper">
+    <%= render partial: "boards/responses", locals: { board: @board } %>
   </div><!-- response-wrapper -->
 </div><!-- show-center -->

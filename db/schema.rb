@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_151933) do
+ActiveRecord::Schema.define(version: 2020_05_08_091228) do
+
+  create_table "apples", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "board_likes", force: :cascade do |t|
     t.integer "user_id"
@@ -52,6 +58,13 @@ ActiveRecord::Schema.define(version: 2020_05_02_151933) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
   create_table "homes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,6 +75,13 @@ ActiveRecord::Schema.define(version: 2020_05_02_151933) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "post_hashtags", force: :cascade do |t|
+    t.integer "micropost_id_id"
+    t.integer "hashtag_id_id"
+    t.index ["hashtag_id_id"], name: "index_post_hashtags_on_hashtag_id_id"
+    t.index ["micropost_id_id"], name: "index_post_hashtags_on_micropost_id_id"
   end
 
   create_table "post_likes", force: :cascade do |t|
@@ -81,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_05_02_151933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "table_name"
+    t.string "post_tags"
   end
 
   create_table "re_posts", force: :cascade do |t|

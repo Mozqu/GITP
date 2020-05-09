@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :apples
+
+  get 'practice/index'
+  post 'practice/index'
+
   get 'homes/index' => 'homes#index'
 
 
@@ -9,13 +14,14 @@ Rails.application.routes.draw do
   post 'board_likes/:id/destroy_dislike' => 'board_likes#destroy_dislike'
 
 
-  get 'comments/index'
+  get 'comments/index' => 'comments#index'
+  post 'comments/new' => 'comments#new'
 
   get 're_posts/index'
 
   get 'responses/index'
   post 'responses/:id/create' => 'responses#create'
-  post 'response/:id/destroy' => 'responses#destroy'
+  delete 'response/:id/destroy' => 'responses#destroy'
 
   get 'boards/index' => 'boards#index'
   get 'boards/new' => 'boards#new'
@@ -24,7 +30,7 @@ Rails.application.routes.draw do
   get 'boards/:id' => 'boards#show'
   post 'boards/create' => 'boards#create'
   post 'boards/update' => 'boards#update'
-  post 'boards/:id/destroy' => 'boards#destroy'
+  delete 'boards/:id/destroy' => 'boards#destroy'
 
   get 'followers/index'
   post 'followers/:id/create' => 'followers#create'
@@ -42,7 +48,7 @@ Rails.application.routes.draw do
   get 'posts/:id' => 'posts#show'
   post 'posts/create' => 'posts#create'
   post 'posts/update' => 'posts#update'
-  post 'posts/:id/destroy' => 'posts#destroy'
+  delete 'posts/:id/destroy' => 'posts#destroy'
 
 
 

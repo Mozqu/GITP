@@ -1,0 +1,13 @@
+
+
+
+
+<% if Like.find_by(user_id: @current_user.id, post_id: item.id) %>
+  <%= link_to "/likes/#{item.id}/destroy", method: :post, remote: true do %>
+    <span id="like-btn-unlike" class="fa fa-heart"><%= item.likes_count %></span>
+  <% end %>
+<% else %>
+  <%= link_to "/likes/#{item.id}/create", method: :post, remote: true do %>
+    <span id="like-btn" class="fa fa-heart"><%= item.likes_count %></span>
+  <% end %>
+<% end %>

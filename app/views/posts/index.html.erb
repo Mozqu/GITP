@@ -34,15 +34,9 @@
   </div>
   <div class="post-bottom">
 
-    <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
-      <%= link_to("/likes/#{post.id}/destroy", {method: "post"}) do %>
-        <span id="like-btn-unlike" class="fa fa-heart"><%= post.likes_count %></span>
-      <% end %>
-    <% else %>
-      <%= link_to("/likes/#{post.id}/create", {method: "post"}) do %>
-        <span id="like-btn" class="fa fa-heart"><%= post.likes_count %></span>
-      <% end %>
-    <% end %>
+    <div id="like-<%= post.id %>">
+      <%= render partial: "posts/like", locals: { item: post } %>
+    </div>
 
     <span class="fa fa-comment"></span>
   </div>

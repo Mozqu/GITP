@@ -46,6 +46,9 @@
   font-size: 10px;
   margin-bottom: 6px;
 }
+.post-sentence p {
+  font-size: 14px;
+}
 .user-image {
   margin-right: 10px;
   height: 30px;
@@ -79,6 +82,14 @@
   padding: 0 10px 10px 10px;
   box-sizing: border-box;
   border-bottom: 1px solid #999;
+}
+
+.post-tags {
+  overflow: hidden;
+  width: auto;
+}
+.post-tags:hover {
+  overflow-x: scroll;
 }
 
 .post-bottom {
@@ -201,6 +212,12 @@
 .post-info span {
   margin: 10px 100px 10px 0;
   color: #9d9d9d;
+}
+
+//posts/new
+#hash-input {
+  width: 500px;
+  overflow: scroll;
 }
 
 /* いいね by Motoya */

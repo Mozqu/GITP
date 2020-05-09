@@ -1,5 +1,7 @@
 class Board < ApplicationRecord
-
+  validates :title, {presence: true}
+  validates :table_name, {presence: true}
+  
   def user
     return User.find_by(id: self.user_id)
   end

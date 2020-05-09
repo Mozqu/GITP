@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user
+
+
   def index
     @posts = Post.all.order(created_at: :desc)
   end
@@ -14,9 +17,13 @@ class PostsController < ApplicationController
   end
 
   def create
+    if validate_hashtag?
+
+
     @post = Post.new(
       user_id: @current_user.id,
       content: params[:content],
+      post_tags: params[:post_tags],
       table_name: "posts"
     )
     if @post.save
@@ -44,12 +51,10 @@ class PostsController < ApplicationController
 
       if @post.save
         redirect_to("/posts/#{@post.id}")
-      else
-        render("posts/new")
       end
-    else
-      render("/posts/new")
     end
+    end
+    render("/posts/new")
   end
 
   def edit
@@ -63,7 +68,6 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-
     redirect_to("/posts/index")
   end
 
@@ -73,6 +77,17 @@ class PostsController < ApplicationController
 
   def post_test
     @posts = Post.all.order(created_at: :desc)
+  end
+
+  private
+  def validate_hashtag?
+    hashtags = params[:post_tags].split
+    hashtags.each do |s|
+      s = s.chars
+      if s[0] != "#"
+        return nil
+      end
+    end
   end
 
 end

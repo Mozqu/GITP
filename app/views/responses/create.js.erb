@@ -1,0 +1,3 @@
+$("#reponses-create").html("<%= j(render partial: "boards/responses", locals: { board: @board }) %>");
+$('textarea[name="content"]').val("");
+$('#responses-count').html("<%= @board.responses.count %>");
