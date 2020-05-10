@@ -82,8 +82,36 @@ $(function() {
       }
     )/*board-item*/
 
-    $('#hash-input').chage(function(){
+    $('#hash-input').keyup(function(e){
+      var $inputText = $('.js-input-text');
+      var $dummyInputText = $('.js-dummy-input-text');
+
+      function updateValue(e) {
+        var value = $(e.target).val();
+        $(e.target).prev($dummyInputText).text(value);
+      }
+
+      $inputText.on('keyup', updateValue);
+      $inputText.on('compositionend', updateValue);
+
       var val = $(this).val();
-      
+      if (e.keyCode === 32){
+        result = val.match(/^#/);
+        if(result) {
+          $('#hash-input-container').before('<div class="hash-tag-inputed">' + val + '</div>');
+          $(this).val('');
+        } else {
+          val = "#" + val;
+          $('#hash-input-container').before('<div class="hash-tag-inputed">' + val + '</div>');
+          $(this).val('');
+        }
+      }/*スペースが押されたとき*/
     });
+    $('#hash-input').keydown(function(e){
+      var val = $(this).val();
+      if (val == "" && e.keyCode === 8){
+        $(this).parent().prev().remove();
+      }
+    });
+
 }); /*function*/

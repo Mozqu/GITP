@@ -21,10 +21,10 @@
 }
 .post-item {
   width: 300px;
-  background-color: #fff;
+  background-color: #ddd;
   margin: 0 6px 6px 0;
   min-height: 60px;
-
+  color: #333;
   box-sizing: border-box;
   //transition: background-color 0.3s;
 }
@@ -216,8 +216,84 @@
 
 //posts/new
 #hash-input {
-  width: 500px;
-  overflow: scroll;
+  border: none;
+  height: 30px;
+  display: inline;
+  padding: 0;
+  width: 100%;
+  font-size: 16px;
+}
+.create {
+  width: 600px;
+}
+#post-content {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  font-family: cursive;
+}
+.hash-wrapper {
+
+}
+#hash-input-container {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+}
+
+.hash-tag-inputed {
+  display: inline-block;
+  height: 30px;
+  padding: 0;
+  margin-right: 10px;
+  background-color: #fff;
+  line-height: 30px;
+  transition: color 0.5s;
+  transition: background-color 0.5s;
+
+}
+.hash-tag-inputed:hover {
+  color: blue;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.hashtag-input-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+#post-tags-input {
+  cursor: pointer;
+  height: 30px;
+  width: 100%;
+}
+.post-send-btn {
+  cursor: pointer;
+}
+
+.input-text__dummy {
+  display: inline-block;
+  overflow: hidden;
+  min-width: 1em;
+  padding: 3px 5px;
+  white-space: nowrap;
+  opacity: 0;
+}
+.input-text__dummy::before {
+  content: '';
+}
+.input-text__dummy:empty::before {
+  content: attr(data-placeholder);
+}
+.input-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2px;
 }
 
 /* いいね by Motoya */

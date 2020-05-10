@@ -17,9 +17,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    if validate_hashtag?
-
-
     @post = Post.new(
       user_id: @current_user.id,
       content: params[:content],
@@ -27,7 +24,6 @@ class PostsController < ApplicationController
       table_name: "posts"
     )
     if @post.save
-
       if params[:image1]
         @post.image_name1 = "#{@post.id}_1"
         image = params[:image1]
@@ -50,9 +46,8 @@ class PostsController < ApplicationController
       end
 
       if @post.save
-        redirect_to("/posts/#{@post.id}")
+        redirect_to("/posts/#{@post.id}") and return
       end
-    end
     end
     render("/posts/new")
   end

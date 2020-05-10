@@ -1,17 +1,66 @@
-<%= form_tag("/posts/create",{multipart: true}) do %>
 
-<div class="post_form">
-  <p>内容</p>
-  <textarea name="content" rows="8" cols="80"></textarea>
-  <input id="hash-input" type="text" name="post_tags" size="255">
-  <p>画像</p>
-  <input type="file" name="image1">
-  <input type="file" name="image2">
-  <input type="file" name="image3">
-  <input type="file" name="image4">
-  <input type="submit">
-  <p style="color: white" id="test" >test</p>
+
+<%= form_tag("/posts/create",{multipart: true}) do %>
+<div class="post-item create">
+  <div class="post-top">
+    <object>
+      <%= link_to("/users/#{@current_user.id}",{class: "user-image-link"}) do %>
+      <img class="user-image" src="<%= "/user_images/#{@current_user.image_name}" %>">
+      <% end %>
+    </object>
+    <object><p><%= link_to("#{@current_user.name}", "/users/#{@current_user.id}") %> </p></object>
+  </div>
+
+  <div class="post-images">
+
+  </div>
+  <textarea id="post-content" name="content" placeholder="テキストを入力" rows="8" cols="80"></textarea>
+
+  <div class="post-sentence">
+
+      <div class="hashtag-input-wrapper">
+
+
+
+        <div id="hash-input-container">
+          <div class="input-text__dummy js-dummy-input-text" data-placeholder="#タグ"></div>
+          <input id="hash-input" class="input-text js-input-text" type="text" name="post_tags" placeholder="#タグ" autocomplete="off" size="255">
+        </div>
+      </div>
+
+  </div>
+
+
+
+  <div class="post-bottom">
+
+    <input class="un-show" type="submit" id="send-btn" name="" value="">
+    <label for="send-btn"><span class="post-send-btn">送信する</span></label>
+
+  </div>
 </div>
 
-
 <% end %>
+
+<!--
+<div class="show-center">
+  <div class="post_form">
+    <p>内容</p>
+    <textarea name="content" rows="8" cols="80"></textarea>
+
+
+    <div class="hash-wrapper">
+
+    </div>
+
+    <p>画像</p>
+    <input type="file" name="image1">
+    <input type="file" name="image2">
+    <input type="file" name="image3">
+    <input type="file" name="image4">
+    <input type="submit">
+    <p style="color: white" id="test" >test</p>
+  </div>
+
+</div>
+-->

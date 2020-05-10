@@ -15,7 +15,7 @@
  */
  body{
       margin: 0px;
-      background-color: #232f34;
+      background-color: #333;
 }
 p {
   margin: 0;
@@ -32,20 +32,28 @@ a {
 
 }
 header {
-  height: 30px;
+  height: 35px;
   position: sticky;
   top: 0;
-  background-color: orange;
+  background-color: rgba(100,100,100,0.6);
   display: flex;
   justify-content: center;
   justify-content: space-around;
   align-items: center;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 10px 10px;
+  border: 2px solid #333;
+  border-top: none;
   z-index: 100;
 }
 
 header h1{
   font-size: 18px;
+  background-color: #00bb85;
+  padding: 0 10px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-family: cursive;
+  color: #222;
 }
 
 header input {
@@ -59,4 +67,12 @@ ul {
 li {
   border-left: 1px solid black;
   padding: 0 10px;
+  color: #fff;
+  font-family: cursive;
+}
+input {
+  outline: 0;
+}
+textarea {
+  outline: 0;
 }
