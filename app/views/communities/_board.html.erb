@@ -1,0 +1,65 @@
+
+<span id="board-new-modal-show" class="fas fa-plus fa-2x"></span>
+
+<% boards.each do |board| %>
+<div class="board-item index">
+  <div class="board-top">
+
+      <%= link_to("/users/#{board.user_id}",{class: "user-image-link"}) do %>
+      <img class="user-image" src="<%= "/user_images/#{board.user.image_name}" %>">
+      <% end %>
+      <p><%= link_to("#{board.user.name}", "/users/#{board.user_id}") %> </p>
+
+  </div>
+  <div class="board-middle">
+    <p><%= board.content %></p>
+  </div>
+  <div class="board-images">
+    <img src="<%= "/board_images/#{board.image_name1}" %>">
+
+  </div>
+  <div class="board-bottom">
+    <div id="board-like-<%= board.id %>" class="up-down">
+      <%= render partial: "boards/board_like", locals: { board: board } %>
+    </div>
+    <div class="reponses-count">
+      <span class="far fa-comment"></span>
+      <p><%= board.responses.count %></p>
+    </div>
+
+  </div>
+
+  <div class="unshow">
+    <% board.responses.each do |response| %>
+
+    <div class="response-item">
+
+      <div class="response-top">
+        <object>
+          <%= link_to("/users/#{response.user_id}",{class: "user-image-link"}) do %>
+          <img class="user-image" src="<%= "/user_images/#{response.user.image_name}" %>">
+          <% end %>
+        </object>
+        <object><p><%= link_to("#{response.user.name}", "/users/#{response.user_id}") %> </p></object>
+        <p1><%= response.created_at %></p1>
+      </div>
+
+
+      <div class="response-sentence">
+
+        <p><%= response.content %></p>
+      </div>
+      <div class="response-bottom">
+        <span class="fa fa-comment"></span>
+      </div>
+
+    </div>
+    <% if response == board.responses[4] %>
+    <% break %>
+    <% end %>
+
+    <% end %>
+  </div>
+
+</div>
+<% end %>

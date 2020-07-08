@@ -1,0 +1,13 @@
+<% if Follower.find_by(user_id: user.id, follower_id: @current_user.id) == nil %>
+  <%= link_to "/followers/#{user.id}/create", method: :post, remote: true do %>
+  <span class="follow-btn">
+    フォローする
+  </span>
+  <% end %>
+<% else %>
+  <%= link_to "/followers/#{user.id}/destroy", method: :post, remote: true do %>
+  <span class="follow-btn">
+    フォローを解除する
+  </span>
+  <% end %>
+<% end %>

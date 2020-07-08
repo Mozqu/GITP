@@ -1,0 +1,39 @@
+
+
+<div class="show-center commu">
+  <div class="commu-wrapper">
+
+    <div class="commu-header">
+      <div class="commu-info">
+        <img class="commu-image" src="/user_images/default_image.jpg" alt="">
+        <div class="">
+          <h2 class="commu-title"><%= @community.community_name %></h2>
+          <p class="commu-publish">by <%= User.find_by(id: @community.published).name %></p>
+        </div>
+      </div>
+      <div id="commu-recomend">
+        <%= render partial: "communities/confirm_member", locals: { community: @community } %>
+      </div>
+    </div><!-- commu-header -->
+
+    <div class="commu-navi-wrapper">
+      <ul>
+        <%= link_to "/communities/#{@community.id}/home", method: :post, remote: true do %><li id="li-home" style="background-color: #6A5ACD;"><i class="fa fa-home"></i><p1>ホーム</p1></li><% end %>
+        <%= link_to "/communities/#{@community.id}/board", method: :post, remote: true do %><li id="li-board"><i class="fa fa-comments"></i><p1>掲示板</p1></li><% end %>
+        <%= link_to "/communities/#{@community.id}/member", method: :post, remote: true do %><li id="li-member"><i class="fas fa-users"></i><p1>メンバー</p1></li><% end %>
+        <%= link_to "/communities/#{@community.id}/media", method: :post, remote: true do %><li id="li-media"><i class="fas fa-camera"></i><p1>メディア</p1></li><% end %>
+      </ul>
+      <ul>
+        <li>編集</li>
+      </ul>
+    </div><!-- commu-navi-wrapper -->
+
+    <div id="commu-main">
+      <%= render partial: "communities/home", locals: { community: @community } %>
+    </div><!-- commu-main -->
+
+  </div><!-- commu-wrapper -->
+  <div class="commu-info-wrapper">
+
+  </div>
+</div>

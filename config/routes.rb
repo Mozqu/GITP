@@ -1,11 +1,23 @@
 Rails.application.routes.draw do
 
-  resources :apples
+  get 'communities/index' => 'communities#index'
+  get 'communities/create_form' => 'communities#new'
+  get 'communities/:id' => 'communities#show'
+  post 'communities/create' => 'communities#create'
+  post 'communities/:id/home' => 'communities#home'
+  post 'communities/:id/board' => 'communities#board'
+  post 'communities/:id/member' => 'communities#member'
+  post 'communities/:id/media' => 'communities#media'
+  post 'communities/:id/add_member' => 'communities#add_member'
+  post 'communities/:id/remove_member' => 'communities#remove_member'
+
 
   get 'practice/index'
   post 'practice/index'
 
   get 'homes/index' => 'homes#index'
+  get 'homes/sort' => 'homes#sort'
+  post 'homes/sort' => 'homes#sort'
 
 
   post 'board_likes/:id/create_like' => 'board_likes#create_like'
@@ -34,6 +46,7 @@ Rails.application.routes.draw do
 
   get 'followers/index'
   post 'followers/:id/create' => 'followers#create'
+  post 'followers/:id/destroy' => 'followers#destroy'
 
   get 'likes/index'
 

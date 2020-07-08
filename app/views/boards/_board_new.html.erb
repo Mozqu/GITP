@@ -1,0 +1,46 @@
+
+<div id="commu-board-modal">
+  <%= form_tag("/boards/create",{multipart: true}) do %>
+  <div class="post-item create">
+    <i id="post-new-close" class="far fa-window-close"></i>
+    <div class="post-top">
+      <object>
+        <%= link_to("/users/#{@current_user.id}",{class: "user-image-link"}) do %>
+        <img class="user-image" src="<%= "/user_images/#{@current_user.image_name}" %>">
+        <% end %>
+      </object>
+      <object><p><%= link_to("#{@current_user.name}", "/users/#{@current_user.id}") %> </p></object>
+    </div>
+
+    <div class="post-images">
+
+    </div>
+    <div class="media-wrapper">
+      <%= file_field_tag "images[]", id: "camera", type: :file %>
+      <label for="camera"><i class="fas fa-camera"></i></label>
+    </div>
+
+    <input class="board-title" type="text" name="title" placeholder="タイトル">
+    <textarea id="post-content" name="content" placeholder="内容" rows="8" cols="80"></textarea>
+
+    <div class="post-sentence">
+        <div class="hashtag-input-wrapper">
+          <div id="hash-input-container">
+            <div class="input-text__dummy js-dummy-input-text" data-placeholder="#タグ"></div>
+            <input id="hash-input" class="input-text js-input-text" type="text" placeholder="#タグ" autocomplete="off" size="255">
+          </div>
+          <input class="un-show" id="result" type="text" name="post_tags" value="">
+        </div>
+    </div><!-- post-sentence -->
+
+
+    <input name="community" value="<%="#{community.id}"%>" style="display: none;">
+
+    <div class="post-bottom">
+      <input class="un-show" type="button" id="board-send-btn" onclick="submit();" name="" value="">
+      <label for="board-send-btn"><span class="post-send-btn">送信する</span></label>
+    </div><!-- post-bottom -->
+  </div>
+
+  <% end %>
+</div>

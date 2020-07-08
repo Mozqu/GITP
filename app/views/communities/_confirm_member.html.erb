@@ -1,0 +1,5 @@
+<% if CommunityMember.find_by(community_id: community.id, user_id: @current_user.id) == nil %>
+  <%= link_to "/communities/#{community.id}/add_member", method: :post, remote: true do %><span class="commu-recomend-bottom yet-member">メンバーになる</span><% end %>
+<% else %>
+  <%= link_to "/communities/#{community.id}/remove_member", method: :post, remote: true do %><span class="commu-recomend-bottom already-member">あなたはメンバーです</span><% end %>
+<% end %>

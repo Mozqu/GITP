@@ -1,0 +1,134 @@
+// Place all the styles related to the community controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.commu {
+  display: flex;
+  margin: 20 auto;
+}
+.commu-wrapper {
+  color: #333;
+  width: 800px;
+  margin: 10px 10px;
+}
+
+.commu-wrapper input[type=text] {
+  width: 80%;
+  font-size: 20px;
+}
+
+.commu-wrapper textarea {
+  width: 80%;
+  height: 200px;
+  font-size: 20px;
+}
+.commu-wrapper input[type=submit] {
+
+}
+.commu-header {
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.commu-info {
+  display: flex;
+}
+.commu-info h2 {
+  margin: 5px 0;
+}
+.commu-info div {
+  margin-left: 10px;
+}
+.commu-image {
+  width: 70px;
+  height: 70px;
+}
+.commu-recomend-bottom {
+  height: 30px;
+  padding: 0 12px;
+  line-height: 30px;
+  border: 1px solid #000;
+  display: inline-block;
+}
+.yet-member {
+  background-color: red;
+}
+.commu-navi-wrapper {
+  background-color: #fff;
+  width: 100%;
+  height: 90px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+.commu-navi-wrapper ul {
+  display: flex;
+  margin: 0;
+  padding: 0px;
+
+}
+.border-hide {
+  position: absolute;
+  display: none;
+  height: 3px;
+  width: 118px;
+  bottom: -1px;
+  background-color: #fff;
+}
+#border-hide-home {
+  display: block;
+}
+.active {
+  background-color: #6A5ACD
+}
+
+.commu-navi-wrapper li{
+  width: 80px;
+  height: 80px;
+  margin: 0 10px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  color: #000;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.commu-navi-wrapper i {
+  font-size: 25px;
+}
+.commu-navi-wrapper p1 {
+  font-size: 14px;
+  height: 17px;
+  font-weight: bold;
+}
+#commu-main {
+
+  position: relative;
+}
+.commu-main-container {
+  background-color: #fff;
+  padding: 20px 20px 20px 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.commu-wrapper h3 {
+  border-bottom: 1px solid #000;
+  margin: 20px 0;
+}
+.commu-info-wrapper {
+  background-color: #FFF;
+  color: #000;
+  width: 200px;
+  height: 300px;
+  margin: 10px 10px;
+}

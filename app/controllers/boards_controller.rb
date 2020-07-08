@@ -11,7 +11,8 @@ class BoardsController < ApplicationController
       user_id: @current_user.id,
       title: params[:title],
       content: params[:content],
-      table_name: "boards"
+      table_name: "boards",
+      community: params[:community].to_i
     )
     if params[:image]
       @board.image_name1 = "#{@board.id}_1"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_091228) do
+ActiveRecord::Schema.define(version: 2020_07_05_070812) do
 
   create_table "apples", force: :cascade do |t|
     t.string "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_091228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "table_name"
+    t.integer "community"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -47,6 +48,25 @@ ActiveRecord::Schema.define(version: 2020_05_08_091228) do
     t.string "image_name2"
     t.string "image_name3"
     t.string "image_name4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.string "community_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "rule"
+    t.string "introduce"
+    t.string "published"
+    t.string "is_open"
+  end
+
+  create_table "community_members", force: :cascade do |t|
+    t.integer "community_id"
+    t.integer "user_id"
+    t.string "authority"
+    t.string "allowed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,13 +97,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_091228) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_hashtags", force: :cascade do |t|
-    t.integer "micropost_id_id"
-    t.integer "hashtag_id_id"
-    t.index ["hashtag_id_id"], name: "index_post_hashtags_on_hashtag_id_id"
-    t.index ["micropost_id_id"], name: "index_post_hashtags_on_micropost_id_id"
-  end
-
   create_table "post_likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
@@ -102,6 +115,13 @@ ActiveRecord::Schema.define(version: 2020_05_08_091228) do
     t.datetime "updated_at", null: false
     t.string "table_name"
     t.string "post_tags"
+  end
+
+  create_table "posts_hashtags", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hashtag_id"
+    t.index ["hashtag_id"], name: "index_posts_hashtags_on_hashtag_id"
+    t.index ["post_id"], name: "index_posts_hashtags_on_post_id"
   end
 
   create_table "re_posts", force: :cascade do |t|

@@ -1,0 +1,10 @@
+$("#commu-main").html("<%= j(render partial: "communities/board", locals: { community: @community, boards: @boards }) %>");
+$(".show-center").before("<%= j(render partial: "boards/board_new", locals: { community: @community}) %>");
+
+$("#li-home").css('backgroundColor', 'inherit');
+$("#li-board").css('backgroundColor', '#6A5ACD');
+$("#li-member").css('backgroundColor', 'inherit');
+$("#li-media").css('backgroundColor', 'inherit');
+
+var right = $("#commu-main").css("width");
+$("#board-new-modal-show").css("left", right);

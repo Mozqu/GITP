@@ -25,9 +25,10 @@
 
       <h1 class="title">G I T P</h1>
 
-      <input type="text" name="" placeholder="検索" >
 
-      <ul>
+
+
+       <ul>
         <% if @current_user == nil %>
         <li><%= link_to("SIGNUP", "/signup") %></li>
         <li><%= link_to("LOGIN", "/login_form") %></li>
@@ -35,17 +36,30 @@
         <li><%= link_to("INDEX", "/homes/index") %></li>
         <li><%= link_to("MYPAGE", "/users/#{@current_user.id}") %></li>
         <li><%= link_to("LOGOUT", "/logout",{method: :post}) %></li>
+        <li><span id="posts-new-modal-show" class="fas fa-pencil-alt"></span></li>
         <% end %>
       </ul>
 
+
+
     </header>
+    <% if @current_user %>
+    <div id="posts-new-modal">
+      <%= render partial: "posts/new" %>
+    </div>
+    <% end %>
+    <div class="header-blank"></div>
+
+
+
     <div class="main-content-wrapper">
       <%= yield %>
     </div>
     <script>
     var $grid = jQuery('#show-center').imagesLoaded(function(){
       $grid.masonry({
-        itemSelector: '.item'
+        itemSelector: '.item',
+        isFitWidth: true
       });
     });
     </script>

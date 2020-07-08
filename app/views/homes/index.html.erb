@@ -1,5 +1,22 @@
 
+
+<div id="sort-wrapper">
+  <%= form_tag "/homes/sort" do %>
+  <input type="checkbox" name="post" value="Post" checked="checked">
+  Post
+  <input type="checkbox" name="board" value="Board" checked="checked">
+  Board
+  <input class="sort-word" type="text" name="search" value="" placeholder="キーワードを入力">
+  <input type="submit" name="" value="検索する">
+  <% end %>
+</div>
+<div class="sort-wrapper-dummy">
+
+</div>
+
 <div id="show-center">
+
+
 
 <% @all_items.each do |item| %>
   <div class="item">
@@ -23,28 +40,8 @@
 
     </div>
     <div class="board-bottom">
-      <div class="up-down">
-        <% if BoardLike.find_by(user_id: @current_user.id, board_id: item.id, points: 1) %>
-          <%= link_to("/board_likes/#{item.id}/destroy_like", {method: :delete}) do %>
-          <span class="fa fa-arrow-up red"></span>
-          <% end %>
-        <% else %>
-          <%= link_to("/board_likes/#{item.id}/create_like",{method: :post}) do %>
-          <span class="fa fa-arrow-up"></span>
-          <% end %>
-        <% end %>
-
-        <p><%= item.total_likes %></p>
-
-        <% if BoardLike.find_by(user_id: @current_user.id, board_id: item.id, points: -1) %>
-          <%= link_to("/board_likes/#{item.id}/destroy_dislike",{method: :delete}) do %>
-          <span class="fa fa-arrow-down blue"></span>
-          <% end %>
-        <% else %>
-          <%= link_to("/board_likes/#{item.id}/create_dislike",{method: :post}) do %>
-          <span class="fa fa-arrow-down"></span>
-          <% end %>
-        <% end %>
+      <div id="board-like-<%= item.id %>" class="up-down">
+        <%= render partial: "boards/board_like", locals: { board: item } %>
       </div>
       <div class="reponses-count">
         <span class="far fa-comment"></span>
@@ -100,6 +97,7 @@
     </div>
 
   </div>
+  
   <% elsif item.table_name == "posts" %>
   <!-- Post -->
   <div class="post-item">
@@ -129,6 +127,11 @@
     <div class="post-sentence">
     <p1><%= item.created_at %></p1>
     <p><%= item.content %></p>
+    <% if item.post_tags %>
+    <div class="post-tags">
+      <p><%= item.post_tags %></p>
+    </div>
+    <% end %>
     </div>
     <div class="post-bottom">
       <div id="like-<%= item.id %>">
