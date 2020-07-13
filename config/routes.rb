@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :homes
+   root 'homes#index' 
+
   get 'communities/index' => 'communities#index'
   get 'communities/create_form' => 'communities#new'
   get 'communities/:id' => 'communities#show'
