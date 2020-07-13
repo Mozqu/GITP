@@ -1,9 +1,7 @@
 $(function() {
 
   function buildHTML() {
-      var html =  "<div class="upper-box">
-                      <img src="" alt="preview">
-                    </div>"
+      var html =  "<div class="upper-box"><img src="" alt="preview"></div>"
       return html;
     }
 
