@@ -35,8 +35,8 @@
 .post-top {
   display: flex;
   align-items: center;
-  height: 42px;
-  padding: 10px;
+  height: 40px;
+  padding: 5px 10px;
   box-sizing: border-box;
 }
 .post-sentence p1 {
@@ -49,14 +49,18 @@
 }
 .user-image {
   margin-right: 10px;
-  height: 30px;
-  width: 30px;
-  border-radius: 5px;
+  height: 32px;
+  width: 32px;
+  padding: 2px;
+  border-radius: 16px;
+  border: 1px solid #000;
+  box-sizing: border-box;
 }
 
 .user-image-link {
-  height: 30px;
-  display: block;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .post-images {

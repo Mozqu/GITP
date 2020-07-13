@@ -11,7 +11,6 @@
   background-color: #fff;
   color: #595959;
   margin: 0 6px 6px 0;
-
 }
 .board-top {
   height: 45px;
@@ -21,10 +20,10 @@
   align-items: center;
 }
 .board-middle {
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 0px 10px;
 }
 .board-images {
-  padding: 0 10px;
+  padding: 5px 10px;
 }
 .board-images img {
   max-height: 100%;
@@ -38,6 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  border-top: 1px solid #999;
 }
 .up-down, .reponses-count {
   display: flex;
@@ -45,7 +45,6 @@
   align-items: center;
   margin-right: 30px;
 }
-
 .up-down p {
   margin: 0 10px;
 }
@@ -151,14 +150,6 @@
   bottom: 10px;
   cursor: pointer;
 }
-.show-btn-rail {
-  width: 40px;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  right: 10px;
-  background-color: red;
-}
 #commu-board-modal {
   display: none;
   position: fixed;
@@ -170,5 +161,6 @@
   overflow: scroll;
 }
 .index {
-
+  width: 100%;
+  border-radius: 5px;
 }

@@ -1,4 +1,4 @@
-$("#commu-main").html("<%= j(render partial: "communities/member", locals: { board: @community }) %>")
+$("#commu-main").html("<%= j(render partial: "communities/member", locals: { board: @community, members: @members }) %>")
 $("#li-home").css('backgroundColor', 'inherit');
 $("#li-board").css('backgroundColor', 'inherit');
 $("#li-member").css('backgroundColor', '#6A5ACD');

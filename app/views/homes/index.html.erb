@@ -1,5 +1,6 @@
 
 
+
 <div id="sort-wrapper">
   <%= form_tag "/homes/sort" do %>
   <input type="checkbox" name="post" value="Post" checked="checked">
@@ -13,6 +14,7 @@
 <div class="sort-wrapper-dummy">
 
 </div>
+
 
 <div id="show-center">
 
@@ -28,6 +30,8 @@
 
         <%= link_to("/users/#{item.user_id}",{class: "user-image-link"}) do %>
         <img class="user-image" src="<%= "/user_images/#{item.user.image_name}" %>">
+
+
         <% end %>
         <p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p>
 
@@ -35,10 +39,11 @@
     <div class="board-middle">
       <p><%= item.content %></p>
     </div>
+    <% if item.image_name1 %>
     <div class="board-images">
       <img src="<%= "/board_images/#{item.image_name1}" %>">
-
     </div>
+    <% end %>
     <div class="board-bottom">
       <div id="board-like-<%= item.id %>" class="up-down">
         <%= render partial: "boards/board_like", locals: { board: item } %>
@@ -97,16 +102,16 @@
     </div>
 
   </div>
-  
+
   <% elsif item.table_name == "posts" %>
   <!-- Post -->
   <div class="post-item">
     <div class="post-top">
-    <object>
-      <%= link_to("/users/#{item.user_id}",{class: "user-image-link"}) do %>
-      <img class="user-image" src="<%= "/user_images/#{item.user.image_name}" %>">
-      <% end %>
-    </object>
+
+    <%= link_to("/users/#{item.user_id}",{class: "user-image-link"}) do %>
+    <img class="user-image" src="<%= "/user_images/#{item.user.image_name}" %>">
+    <% end %>
+
 
     <object><p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p></object>
     </div>

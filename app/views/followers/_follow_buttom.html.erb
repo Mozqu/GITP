@@ -1,0 +1,13 @@
+<% if member.user.is_follow?(@current_user.id) %>
+<%= link_to "/followers/#{board.id}/destroy", method: :post, remote: true do %>
+<div class="follow-button-done">
+  フォローしています
+</div>
+<% end %>
+<% else %>
+<%= link_to "/followers/#{board.id}/create", method: :post, remote: true do %>
+<div class="follow-button-yet">
+  フォローしますか？
+</div>
+<% end %>
+<% end %>

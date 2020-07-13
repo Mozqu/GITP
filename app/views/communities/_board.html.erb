@@ -14,10 +14,11 @@
   <div class="board-middle">
     <p><%= board.content %></p>
   </div>
+  <% if board.image_name1 %>
   <div class="board-images">
     <img src="<%= "/board_images/#{board.image_name1}" %>">
-
   </div>
+  <% end %>
   <div class="board-bottom">
     <div id="board-like-<%= board.id %>" class="up-down">
       <%= render partial: "boards/board_like", locals: { board: board } %>

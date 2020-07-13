@@ -1,3 +1,33 @@
-<div class="commu-main-container">
-  <h3>メンバー</h3>
-</div>
+
+  <div id="commu-member-show">
+    <% @members.each do |member| %>
+    <div class="item-commu-member">
+      <div class="commu-member-top">
+        <% if member.authority == "have"  %>
+        <span></span>
+        <% end %>
+        <% if @current_user != member.user %>
+        <div id="follow-commu-member-<%= "#{member.user.id}" %>">
+          <%= render partial: "followers/user_follow_recomend", locals: { user: member.user } %>
+        </div>
+        <% end %>
+      </div>
+      <div class="commu-member-header">
+        <img src="/user_images/<%= "#{member.user.image_name}" %>" alt="">
+        <p><%= "#{member.user.name}" %></p>
+        <p class="member-sentence"><%= "#{member.user.introduction}" %></p>
+      </div><!-- commu-member-header -->
+    </div><!-- item-commu-memmber -->
+    <% end %>
+  </div>
+
+
+<script>
+var $grid = jQuery('#commu-member-show').imagesLoaded(function(){
+  $grid.masonry({
+    itemSelector: '.item-commu-member',
+    columnWidth: 290,
+    isFitWidth: true
+  });
+});
+</script>

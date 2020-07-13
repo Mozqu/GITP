@@ -79,7 +79,7 @@ $(function() {
 
       }
     )/*board-item*/
-
+    /*post-new*/
     $('#posts-new-modal-show').click(function(){
       $modal = $('#posts-new-modal');
       $modal.fadeIn();
@@ -90,6 +90,24 @@ $(function() {
       $modal.fadeOut();
       $('body').css('overflow', 'scroll');
     })
+    /* user-menu-modal */
+    var userMenuState = false
+    $('#user-menu-close').click(function(){
+      if (userMenuState) {
+        $('#user-menu-modal').slideUp();
+        $('#user-menu-close').css('display', 'none');
+        userMenuState = false;
+      }
+    })
+    $('#user-menu-modal-show').click(function(){
+      if (userMenuState == false) {
+        $('#user-menu-modal').slideDown();
+        $('#user-menu-close').css('display', 'block');
+        userMenuState = true;
+      }
+    })
+
+
 
     var postTags = []
     $('#hash-input').keyup(function(e){
@@ -122,9 +140,8 @@ $(function() {
           $(this).val('');
         }
       }/*スペースが押されたとき*/
-
-
     });
+
     $('#hash-input').keydown(function(e){
       var val = $(this).val();
       /*空白でBackspace*/

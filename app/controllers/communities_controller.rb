@@ -36,7 +36,7 @@ class CommunitiesController < ApplicationController
 
   def member
     @community = Community.find_by(id: params[:id])
-
+    @members = CommunityMember.where(community_id: @community.id).order(created_at: :desc)
   end
 
   def media

@@ -112,7 +112,6 @@
   font-weight: bold;
 }
 #commu-main {
-
   position: relative;
 }
 .commu-main-container {
@@ -131,4 +130,32 @@
   width: 200px;
   height: 300px;
   margin: 10px 10px;
+}
+.item-commu-member {
+  width: 280px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.item-commu-member img {
+  width: 30px;
+  height: 30px;
+}
+.commu-member-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item-commu-member p {
+  padding: 0 5px;
+}
+.commu-member-footer {
+  height: 26px;
+  border-top: 1px solid  #999;
+}
+.member-sentence {
+  font-size: 12px;
+  color: #777;
 }
