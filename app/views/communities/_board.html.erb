@@ -11,6 +11,7 @@
       <p><%= link_to("#{board.user.name}", "/users/#{board.user_id}") %> </p>
 
   </div>
+  <%= link_to "/boards/#{board.id}" %>
   <div class="board-middle">
     <p><%= board.content %></p>
   </div>
@@ -18,6 +19,7 @@
   <div class="board-images">
     <img src="<%= "/board_images/#{board.image_name1}" %>">
   </div>
+  <% end %>
   <% end %>
   <div class="board-bottom">
     <div id="board-like-<%= board.id %>" class="up-down">

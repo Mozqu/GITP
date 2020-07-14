@@ -36,10 +36,12 @@
         <p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p>
 
     </div>
+    <%= form_tag "/boards/#{item.id}" do %>
     <div class="board-middle">
       <p><%= item.content %></p>
     </div>
     <% if item.image_name1 %>
+    <% end %>
     <div class="board-images">
       <img src="<%= "/board_images/#{item.image_name1}" %>">
     </div>
