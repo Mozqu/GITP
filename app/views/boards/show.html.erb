@@ -33,8 +33,8 @@
       <%= form_tag "/responses/#{@board.id}/create", id: "send-response", remote: true do %>
       <textarea placeholder="書き込む" name="content" rows="5"></textarea>
       <div class="send-wrapper">
-        <input id="send-btn" class="unshow"  type="submit">
-        <label class="send-btn" for="send-btn"><i class="fa fa-pencil-alt" > 送信</i></label>
+        <input id="send-btn-response" class="unshow"  type="submit">
+        <label class="send-btn" for="send-btn-response"><i class="fa fa-pencil-alt" > 送信</i></label>
       </div>
       <% end %>
     </div>

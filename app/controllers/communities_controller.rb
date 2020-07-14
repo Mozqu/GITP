@@ -21,7 +21,7 @@ class CommunitiesController < ApplicationController
     if @community.save
       redirect_to("/communities/#{@community.id}")
     else
-      render("/communities/create_form")
+      render("/communities/#{@community.id}")
     end
   end
 

@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    
+
   end
 
   def create
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
         redirect_to("/posts/#{@post.id}") and return
       end
     end
-    render("/posts/new")
+    render("/posts/index")
   end
 
   def edit
