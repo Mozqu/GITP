@@ -34,7 +34,6 @@ Rails.application.routes.draw do
 
   get 're_posts/index'
 
-  get 'responses/index'
   post 'responses/:id/create' => 'responses#create'
   delete 'response/:id/destroy' => 'responses#destroy'
 
