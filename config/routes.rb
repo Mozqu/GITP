@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :homes
-   root 'homes#index' 
-
   get 'communities/index' => 'communities#index'
   get 'communities/create_form' => 'communities#new'
   get 'communities/:id' => 'communities#show'
@@ -22,6 +19,8 @@ Rails.application.routes.draw do
   get 'homes/sort' => 'homes#sort'
   post 'homes/sort' => 'homes#sort'
 
+  resources :homes
+   root 'homes#index'
 
   post 'board_likes/:id/create_like' => 'board_likes#create_like'
   post 'board_likes/:id/destroy_like' => 'board_likes#destroy_like'

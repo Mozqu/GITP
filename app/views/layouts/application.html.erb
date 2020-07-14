@@ -25,8 +25,8 @@
 
       <ul>
        <% if @current_user == nil %>
-       <li><%= link_to("SIGNUP", "/signup") %></li>
-       <li><%= link_to("LOGIN", "/login_form") %></li>
+       <li><%= link_to("Sign up", "/signup") %></li>
+       <li><%= link_to("Login", "/login_form") %></li>
        <% else %>
        <%= link_to("/homes/index") do %><li><i class="fa fa-home"></i></li<% end %>
        <%= link_to("") do %><li><i class="far fa-compass"></i></li><% end %>
