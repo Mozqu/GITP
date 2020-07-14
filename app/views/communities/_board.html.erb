@@ -7,11 +7,11 @@
 
       <%= link_to("/users/#{board.user_id}",{class: "user-image-link"}) do %>
       <img class="user-image" src="<%= "/user_images/#{board.user.image_name}" %>">
-      <% end %>
+      <% end %><!-- user-image-lik -->
       <p><%= link_to("#{board.user.name}", "/users/#{board.user_id}") %> </p>
 
   </div>
-  <%= link_to "/boards/#{board.id}" %>
+  <%= link_to "/boards/#{board.id}" do %>
   <div class="board-middle">
     <p><%= board.content %></p>
   </div>
