@@ -1,32 +1,37 @@
-<div class="show-center">
-  <%= form_tag("/communities/create") do %>
+
+<div class="show-center commu">
   <div class="commu-wrapper">
+    <%= form_tag("/communities/create") do %>
 
     <div class="commu-header">
-      <h3>コミュニティーの名前</h3>
-      <img src="/user_images/404.jpg" alt="">
-	    <input type="text" name="name" value="">
+      <div class="commu-info">
+        <img class="commu-image" src="/user_images/default_image.jpg" alt="">
+        <div class="">
+          <input type="text" name="name" placeholder="コミュニティーネーム" value="">
+        </div>
+      </div>
     </div><!-- commu-header -->
 
+
     <div id="commu-main">
-      <div class="commu-rule">
-        <h3>コミュニティールール</h3>
-        <textarea name="rule" rows="8" cols="80"></textarea>
+      <div class="commu-main-container">
+        <div class="commu-rule">
+          <h3>ルール</h3>
+          <textarea name="rule" rows="8" cols="80"></textarea>
+        </div>
         <div class="">
           <input type="radio" name="isOpen?" value="open" checked="checked">公開
           <input type="radio" name="isOpen?" value="close">非公開
         </div>
+        <div class="commu-introduce">
+          <h3>コミュニティープロフィール</h3>
+          <textarea name="introduce" rows="8" cols="80"></textarea>
         </div>
-      <div class="commu-introduce">
-        <h3>コミュニティーの紹介文</h3>
-        <textarea name="introduce" rows="8" cols="80"></textarea>
       </div>
     </div><!-- commu-main -->
-
-    <input type="submit" name="" value="作成">
-
-    </div>
-
+    <% end %>
   </div><!-- commu-wrapper -->
-  <% end %>
+  <div class="commu-info-wrapper">
+
+  </div>
 </div>
