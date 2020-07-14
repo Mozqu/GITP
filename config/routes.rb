@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/index' => 'comments#index'
+  post 'comments/new' => 'comments#new'
   get 'communities/index' => 'communities#index'
   get 'communities/create_form' => 'communities#new'
   get 'communities/:id' => 'communities#show'
@@ -28,8 +30,7 @@ Rails.application.routes.draw do
   post 'board_likes/:id/destroy_dislike' => 'board_likes#destroy_dislike'
 
 
-  get 'comments/index' => 'comments#index'
-  post 'comments/new' => 'comments#new'
+
 
   get 're_posts/index'
 
