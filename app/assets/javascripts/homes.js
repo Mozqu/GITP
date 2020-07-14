@@ -1,6 +1,6 @@
 $(function() {
 
-  
+
 
   $('#camera').change(function() {
 
@@ -12,7 +12,7 @@ $(function() {
         alert('hello');
         var image = reader.result;
         $('#camera').before('<img id="image-preview_#{id}" class="image-preview" src="" alt="preview">');
-        $('.image-preview').attr('src', `${image}`);
+        $('.image-preview').attr('src', image);
       }
 
 
