@@ -36,7 +36,7 @@
         <p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p>
 
     </div>
-    <%= form_tag "/boards/#{item.id}" do %>
+    <%= link_to "/boards/#{item.id}" do %>
     <div class="board-middle">
       <p><%= item.content %></p>
     </div>
