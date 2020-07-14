@@ -1,5 +1,5 @@
 
-  <% if BoardLike.find_by(user_id: @current_user.id, board_id: board.id, points: 1) %>
+  <% if @current_user && BoardLike.find_by(user_id: @current_user.id, board_id: board.id, points: 1) %>
     <%= link_to "/board_likes/#{board.id}/destroy_like", method: :post, remote: true do %>
     <span class="fa fa-arrow-up red"></span>
     <% end %>
@@ -11,7 +11,7 @@
 
   <p><%= board.total_likes %></p>
 
-  <% if BoardLike.find_by(user_id: @current_user.id, board_id: board.id, points: -1) %>
+  <% if @current_user && BoardLike.find_by(user_id: @current_user.id, board_id: board.id, points: -1) %>
     <%= link_to "/board_likes/#{board.id}/destroy_dislike", method: :post, remote: true do %>
     <span class="fa fa-arrow-down blue"></span>
     <% end %>

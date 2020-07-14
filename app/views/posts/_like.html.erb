@@ -2,7 +2,7 @@
 
 
 
-<% if Like.find_by(user_id: @current_user.id, post_id: item.id) %>
+<% if @current_user && Like.find_by(user_id: @current_user.id, post_id: item.id)  %>
   <%= link_to "/likes/#{item.id}/destroy", method: :post, remote: true do %>
     <span id="like-btn-unlike" class="fa fa-heart"><%= item.likes_count %></span>
   <% end %>
