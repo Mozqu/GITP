@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'comments/index' => 'comments#index'
-  post 'comments/new' => 'comments#new'
+  get 'comments/new' => 'comments#new'
   get 'communities/index' => 'communities#index'
   get 'communities/create_form' => 'communities#new'
   get 'communities/:id' => 'communities#show'
