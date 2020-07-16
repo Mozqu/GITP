@@ -10,8 +10,10 @@ $(function() {
         //読み込み時に発火するイベント
         reader.onload = function() {
           var image = reader.result;
-          $('#camera').before(`<img id="image-preview_${id}"  class="image-preview" src="" alt="preview">`);
-          $(`#image-preview_${id}`).attr('src', image);
+          var targetId = "image-preview_" + id;
+          var targetIdS = "#" + targetId;
+          $('#camera').before('<img id=' + targetId + ' class="image-preview" src="" alt="preview">');
+          $(targetIdS).attr('src', image);
           id += 1;
         }
       } else {
