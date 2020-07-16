@@ -16,8 +16,11 @@
 
   </div>
   <div class="media-wrapper">
-    <%= file_field_tag "images[]", id: "camera", type: :file %>
-    <label for="camera"><i class="fas fa-camera"></i></label>
+    <input id="camera0" class="hidden-field" type="file" name="image1">
+    <input id="camera1" class="hidden-field" type="file" name="image2">
+    <input id="camera2" class="hidden-field" type="file" name="image3">
+    <input id="camera3" class="hidden-field" type="file" name="image4">
+    <label id="camera" for="camera0"><i class="fas fa-camera"></i></label>
   </div>
   <textarea id="post-content" name="content" placeholder="テキストを入力" rows="8" cols="80"></textarea>
 
@@ -61,3 +64,8 @@
 
 </div>
 -->
+
+'<div class="image-preview-container">
+  <img id="' + targetId + '" class="image-preview" src="" alt="">
+  <i id="' + targetId-close + '" class="fa fa-window-close" aria-hidden="true"></i>
+</div>'
