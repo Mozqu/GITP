@@ -25,24 +25,24 @@ class PostsController < ApplicationController
       table_name: "posts"
     )
     if @post.save
-      if params[:image1]
+      if params[:image0]
         @post.image_name1 = "#{@post.id}_1"
-        image = params[:image1]
+        image = params[:image0]
         File.binwrite("public/post_images/#{@post.image_name1}", image.read)
       end
-      if params[:image2]
+      if params[:image1]
         @post.image_name2 = "#{@post.id}_2"
-        image = params[:image2]
+        image = params[:image1]
         File.binwrite("public/post_images/#{@post.image_name2}", image.read)
       end
-      if params[:image3]
+      if params[:image2]
         @post.image_name3 = "#{@post.id}_3"
-        image = params[:image3]
+        image = params[:image2]
         File.binwrite("public/post_images/#{@post.image_name3}", image.read)
       end
-      if params[:image4]
+      if params[:image3]
         @post.image_name4 = "#{@post.id}_4"
-        image = params[:image4]
+        image = params[:image3]
         File.binwrite("public/post_images/#{@post.image_name4}", image.read)
       end
 
