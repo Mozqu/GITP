@@ -20,4 +20,24 @@ class User < ApplicationRecord
     return Follower.find_by(follower_id: current_user_id, user_id: self.id)
   end
 
+  def last_action
+    login = User.find_by(id: self.id).last_login
+    time = (Time.now - login).to_i
+    case
+    when time < 60
+      return "#{time}秒前"
+    when time < 3600
+      minutes = time / 60
+      return "#{minutes}分前"
+    when time < 86400 #24時間以内
+      hours = time / 3600
+      minutes = time % 3600 / 60
+      return "#{hours}時間#{minutes}分前"
+    when time < 604800 #一週間以内
+      day = time / 86400
+      return "#{day}日前"
+    else
+      return "#{login.month}月#{login.day}"
+    end
+  end
 end

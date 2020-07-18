@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
    before_action :authenticate_user
+   after_action :set_last_login, only:[ :create, :destroy]
 
   def index
     @post = Post.find_by(id:3)

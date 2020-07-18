@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
   before_action :set_board
+  after_action :set_last_login, only:[:create]
 
   def index
   end

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user
+  after_action :set_last_login, only:[:create]
 
 
   def index
@@ -68,7 +69,6 @@ class PostsController < ApplicationController
   end
 
   def image_index
-
   end
 
   def post_test

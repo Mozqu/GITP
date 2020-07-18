@@ -1,4 +1,6 @@
 class FollowersController < ApplicationController
+  after_action :set_last_login, only:[ :create, :destroy]
+
   def index
   end
 

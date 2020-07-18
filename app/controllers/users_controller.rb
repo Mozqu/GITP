@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  after_action :set_last_login, only:[:create, :login, :logout]
 
   def index
     @users = User.all

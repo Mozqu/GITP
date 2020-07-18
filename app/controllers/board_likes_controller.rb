@@ -1,5 +1,6 @@
 class BoardLikesController < ApplicationController
   before_action :set_board
+  after_action :set_last_login
 
   def create_like
     @like = BoardLike.find_by(
