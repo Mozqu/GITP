@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  after_action :set_last_login, only [:create]
+  after_action :set_last_login, only:[:create]
 
 
   def index

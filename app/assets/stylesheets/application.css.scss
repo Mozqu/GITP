@@ -102,10 +102,15 @@ header li .fa-pencil-alt {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 5px 10px;
+  padding: 5px 0px;
 }
 #user-menu-modal li {
+  padding: 0px 5px;
   color: #333;
+  transition: background-color 0.5s;
+}
+#user-menu-modal li:hover{
+  background-color: #ddd;
 }
 #user-menu-modal p {
   border-bottom: 1px solid #999;

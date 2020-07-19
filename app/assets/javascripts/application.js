@@ -20,37 +20,28 @@
 
 
 $(function() {
-  var flag = false;
-  $('.post-item').click(
-    function() {
-
-      if (flag){
-        flag  = false;
-        $itemImage = $(this).children('.post-images');
-        $itemImage.css('maxHeight', '500px');
-        $itemSentence = $(this).children('.post-sentence');
-        $itemSentence.css('maxHeight', '140px');
-
-        var $grid = jQuery('#show-center').imagesLoaded(function(){
-        $grid.masonry({
-          itemSelector: '.item',
-          });
-        });
-
-
-    }else {
-      flag = true;
-      $itemImage = $(this).children('.post-images');
-      $itemImage.css('maxHeight', 'none').height();
-      $itemSentence = $(this).children('.post-sentence');
-      $itemSentence.css('maxHeight', 'none').height();
-
-      var $grid = jQuery('#show-center').imagesLoaded(function(){
-        $grid.masonry({
-            itemSelector: '.item',
-          });
-        })
+  $('.post-main').each(function(){
+    var sentenceHeight = $(this).children('.post-sentence').css("height");
+    sentenceHeight = parseInt(sentenceHeight)
+    var imageHeight = $(this).children('.post-images').css('height');
+    imageHeight = parseInt(imageHeight);
+    if(sentenceHeight >= 300 || imageHeight >= 500){
+      $(this).children('.item-open').css('display', 'flex');
     }
+  })
+
+  $('.item-open').click(
+    function() {
+      $(this).fadeOut();
+      $itemSentence = $(this).prev();
+      $itemImage = $itemSentence.prev();
+      $itemSentence.css('max-height', 'none');
+      $itemImage.css('max-height', 'none');
+      var $grid = jQuery('#show-center').imagesLoaded(function(){
+      $grid.masonry({
+        itemSelector: '.item',
+        });
+      });
 
     });
 
