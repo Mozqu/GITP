@@ -7,7 +7,7 @@
   Post
   <input type="checkbox" name="board" value="Board" checked="checked">
   Board
-  <input class="sort-word" type="text" name="search" value="" placeholder="キーワードを入力">
+  <input id="sort-word" type="text" name="search" value="" placeholder="キーワードを入力">
   <input type="submit" name="" value="検索する">
   <% end %>
 </div>
@@ -134,7 +134,7 @@
         <% end %>
         <% if item.post_tags %>
         <div class="post-tags">
-          <p><%= item.post_tags %></p>
+          <%= item.post_tags %>
         </div>
         <% end %>
       </div>
@@ -149,7 +149,7 @@
       <span class="fa fa-comment"></span>
     </div>
 
-  </div>
+  </div><!-- post-itam -->
   <% end %>
   </div>
 <% end %>

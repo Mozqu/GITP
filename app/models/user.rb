@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   def last_action
     login = User.find_by(id: self.id).last_login
-    time = (Time.now - login).to_i
+    time = (Time.current - login).to_i
     case
     when time < 60
       return "#{time}秒前"

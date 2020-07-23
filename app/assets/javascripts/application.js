@@ -20,15 +20,41 @@
 
 
 $(function() {
+
+  //postを読み込み時に実行する
   $('.post-main').each(function(){
     var sentenceHeight = $(this).children('.post-sentence').css("height");
     sentenceHeight = parseInt(sentenceHeight)
     var imageHeight = $(this).children('.post-images').css('height');
     imageHeight = parseInt(imageHeight);
-    if(sentenceHeight >= 300 || imageHeight >= 500){
+    //条件で開くボタンを設置
+    if(sentenceHeight >= 300 || imageHeight >= 450){
       $(this).children('.item-open').css('display', 'flex');
     }
+    //ハッシュタグ切り分けてpタグに変換
+    var htmlTags = new Array();
+    var tags = $(this).find(".post-tags").text();
+    if (tags.trim() != ""){
+      splitTags = tags.split(" ").filter(Boolean);
+      for(let i = 1; i < splitTags.length; i++){
+        var x = i - 1;
+        htmlTags[x] =  '<p class="tags-link">' + splitTags[i] + '</p>'
+      }
+      htmlTags = htmlTags.join("");
+      $(this).find(".post-tags").html(htmlTags);
+    } else {
+      $(this).find(".post-tags").remove();
+    }
   })
+
+  //hashtagsをクリックしたときに検索フォームに代入
+  $(".tags-link").click(function(){
+    var word = $(this).text();
+    var sortWord = $("#sort-word").val();
+    word = sortWord + " " + word;
+    $("#sort-word").val(word);
+  })
+
 
   $('.item-open').click(
     function() {

@@ -50,7 +50,8 @@
          <%= link_to "/logout", method: :post do %>
          <li>ログアウト</li>
          <% end %>
-         
+
+         <li>アクション<br><%= @current_user.last_action %></li>
        </ul>
      </div><!-- user-menu-modal -->
      <% end %>

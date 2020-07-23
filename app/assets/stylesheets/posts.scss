@@ -102,16 +102,26 @@
 }
 
 .post-tags {
-  overflow: hidden;
   width: auto;
-
+  display: flex;
+  flex-wrap: wrap;
+}
+.tags-link {
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.3s;
+  transition: color 0.3s;
+}
+.tags-link:hover {
+  color: #00bb85;
+  background-color: rgba(100,100,50,0.2);
 }
 .post-tags p {
   color: #555;
   font-size: 12px;
 }
 .post-tags:hover {
-  overflow-x: scroll;
 }
 
 .post-bottom {

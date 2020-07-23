@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   has_many :hashtags, through: :posts_hashtags
-  validates :content, {presence: true}
   validates :table_name, {presence: true}
 
   after_create :create_hash_tag

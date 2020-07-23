@@ -1,49 +1,47 @@
 
 
 <div class="post-item">
-  <!--<%= link_to("/posts/#{@post.id}") do %>-->
   <div class="post-top">
-    <object>
-      <%= link_to("/users/#{@post.user_id}",{class: "user-image-link"}) do %>
-      <img class="user-image" src="<%= "/user_images/#{@post.user.image_name}" %>">
-      <% end %>
-    </object>
+    <%= link_to("/users/#{@post.user_id}",{class: "user-image-link"}) do %>
+    <img class="user-image" src="<%= "/user_images/#{@post.user.image_name}" %>">
+    <% end %>
     <object><p><%= link_to("#{@post.user.name}", "/users/#{@post.user_id}") %> </p></object>
   </div>
-
-  <div class="post-images">
-    <% if @post.image_name1 %>
-    <img src="<%= "/post_images/#{@post.image_name1}" %>">
-    <% end %>
-    <% if @post.image_name2 %>
-    <img src="<%= "/post_images/#{@post.image_name2}" %>">
-    <% end %>
-    <% if @post.image_name3 %>
-    <img src="<%= "/post_images/#{@post.image_name3}" %>">
-    <% end %>
-    <% if @post.image_name4 %>
-    <img src="<%= "/post_images/#{@post.image_name4}" %>">
-    <% end %>
+  <div class="post-main">
+    <div class="post-images">
+      <% if @post.image_name1 %>
+      <img src="<%= "/post_images/#{@post.image_name1}" %>">
+      <% end %>
+      <% if @post.image_name2 %>
+      <img src="<%= "/post_images/#{@post.image_name2}" %>">
+      <% end %>
+      <% if @post.image_name3 %>
+      <img src="<%= "/post_images/#{@post.image_name3}" %>">
+      <% end %>
+      <% if @post.image_name4 %>
+      <img src="<%= "/post_images/#{@post.image_name4}" %>">
+      <% end %>
+    </div>
+    <div class="post-sentence">
+      <p1><%= @post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p1>
+      <% if @post.content %>
+      <p><%= @post.content %></p>
+      <% end %>
+      <% if @post.post_tags %>
+      <div class="post-tags">
+        <%= @post.post_tags %>
+      </div>
+      <% end %>
+    </div>
+    <div class="item-open">
+      <p>開く</p>
+    </div>
   </div>
-
-  <div class="post-sentence">
-    <p1><%= @post.created_at %></p1>
-    <p><%= @post.content %></p>
-  </div>
-
-  <% if @post.post_tags %>
-  <div class="post-tags">
-    <p><%= @post.post_tags %></p>
-  </div>
-  <% end %>
-
   <div class="post-bottom">
-
     <div id="like-<%= @post.id %>">
       <%= render partial: "posts/like", locals: { item: @post } %>
     </div>
-
     <span class="fa fa-comment"></span>
   </div>
-  <!--<% end %>-->
-</div>
+
+</div><!-- post-itam -->
