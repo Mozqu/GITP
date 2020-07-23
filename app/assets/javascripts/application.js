@@ -36,7 +36,7 @@ $(function() {
     var tags = $(this).find(".post-tags").text();
     if (tags.trim() != ""){
       splitTags = tags.split(" ").filter(Boolean);
-      for(let i = 1; i < splitTags.length; i++){
+      for(var i = 1; i < splitTags.length; i++){
         var x = i - 1;
         htmlTags[x] =  '<p class="tags-link">' + splitTags[i] + '</p>'
       }
