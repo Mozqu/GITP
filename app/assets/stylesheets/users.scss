@@ -24,11 +24,64 @@
   padding: 0;
   margin: 0;
 }
+.user-show-container {
+  display: flex;
 
+}
+.sidebar-container-blank {
+  width: 200px;
+  height: 100%;
+}
+.sidebar-container {
+  background-color: #ddd;
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+
+}
+.show-center {
+  width: 100%;
+}
 
 #show-center{
-  max-width: 100%;
-  padding: 6px;
+  width: 100%;
+}
+.users-show-menubar {
+  width: 100%;
+  height: 45px;
+  background-color: inherit;
+  margin: 0 6px 6px 0;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-icon {
+  padding: 0 20px;
+  height: 100%;
+  line-height: 45px;
+  position: relative;
+  cursor: pointer;
+}
+.menu-icon span {
+  color: #999;
+  transition: color 0.5s;
+}
+.menu-icon-selected {
+  z-index: -1;
+  width: 0;
+  position: absolute;
+  background-color: #999;
+  top: 0;
+  left: 0;
+  height: 45px;
+  transition: width 0.5s;
+}
+.menu-icon:hover .menu-icon-selected {
+  width: 100%;
+}
+.menu-icon:hover > span {
+  color: #000;
 }
 .introduce-wrapper{
 display: flex;

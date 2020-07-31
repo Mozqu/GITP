@@ -1,75 +1,59 @@
-<div class="show-center">
+<div class="user-show-container">
+  <!-- sidebar
+  <div class="sidebar-container-blank">
+    <div class="sidebar-container">
 
-<div class="introduce-wrapper">
-  <div class="profile-image">
-    <img id="profile-image" src="<%= "/user_images/#{@user.image_name}" %>" alt="">
-    <% if @current_user.id != @user.id  %>
-    <div id="follow-btn-container">
-      <%= render partial: "followers/user_follow_recomend", locals: { user: @user } %>
     </div>
-    <% end %>
   </div>
-  <div class="my info">
-    <div class="user_info">
-      <p>name: <%= @user.name %></p>
-      <p>id: <%= @user.id %></p>
-      <p>フォロー <%= @user.follow_count %> フォロワー <%= @user.follower_count %></p>
-      <div class="introduce">
-        <p>はじめまして</p>
+  -->
+  <div class="show-center">
+    <div class="introduce-wrapper">
+      <div class="profile-image">
+        <img id="profile-image" src="<%= "/user_images/#{@user.image_name}" %>" alt="">
+        <% if @current_user.id != @user.id  %>
+        <div id="follow-btn-container">
+          <%= render partial: "followers/user_follow_recomend", locals: { user: @user } %>
+        </div>
+        <% end %>
+      </div>
+      <div class="my info">
+        <div class="user_info">
+          <p>name: <%= @user.name %></p>
+          <p>id: <%= @user.id %></p>
+          <p>フォロー <%= @user.follow_count %> フォロワー <%= @user.follower_count %></p>
+          <div class="introduce">
+            <p>はじめまして</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="my hobby">
+        <p>i'm</p>
+        <textarea></textarea>
+        <p>like</p>
+        <textarea></textarea>
+      </div> -->
+
+
+    </div>
+    <div class="users-show-menubar item">
+      <div class="menu-icon">
+        <div class="menu-icon-selected"></div>
+        <span>アクション</span>
+      </div>
+      <div class="menu-icon">
+        <div class="menu-icon-selected"></div>
+        <span>投稿</span>
+      </div>
+      <div class="menu-icon">
+        <div class="menu-icon-selected"></div>
+        <span>メディア</span>
       </div>
     </div>
-  </div>
-  <!-- <div class="my hobby">
-    <p>i'm</p>
-    <textarea></textarea>
-    <p>like</p>
-    <textarea></textarea>
-  </div> -->
 
-
-</div>
-</div>
-
-  <div id='show-center'>
-    <% @user.posts.each do |post| %>
-    <div class="item">
-      <div class="post-item">
-        <!--<%= link_to("/posts/#{post.id}") do %>-->
-        <div class="post-top">
-          <object>
-            <%= link_to("/users/#{post.user_id}",{class: "user-image-link"}) do %>
-            <img class="user-image" src="<%= "/user_images/#{post.user.image_name}" %>">
-            <% end %>
-          </object>
-          <object><p><%= link_to("#{post.user.name}", "/users/#{post.user_id}") %> </p></object>
-        </div>
-
-        <div class="post-images">
-          <% if post.image_name1 %>
-          <img src="<%= "/post_images/#{post.image_name1}" %>">
-          <% end %>
-          <% if post.image_name2 %>
-          <img src="<%= "/post_images/#{post.image_name2}" %>">
-          <% end %>
-          <% if post.image_name3 %>
-          <img src="<%= "/post_images/#{post.image_name3}" %>">
-          <% end %>
-          <% if post.image_name4 %>
-          <img src="<%= "/post_images/#{post.image_name4}" %>">
-          <% end %>
-        </div>
-
-        <div class="post-sentence">
-          <p1><%= post.created_at %></p1>
-          <p><%= post.content %></p>
-        </div>
-        <div class="post-bottom">
-          <span class="fa fa-heart"></span>
-          <span class="fa fa-comment"></span>
-        </div>
-        <!--<% end %>-->
-      </div><!-- post-item -->
+    <div id='show-center'>
+      <% @user.posts.each do |post| %>
+        <%= render partial: "posts/post_temp", locals: { item: post } %>
+      <% end %>
     </div>
-
-    <% end %>
   </div>
+</div>
