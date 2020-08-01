@@ -68,16 +68,19 @@ Rails.application.routes.draw do
 
 
 #ユーザー系　by　Motoya#
-  post "users/:id/update" => "users#update"
   get "users/:id/edit" => "users#edit"
-  post "users/create" => "users#create"
   get "signup" => "users#new"
   get "users/index" => "users#index"
   get "users/:id" => "users#show"
   get "login_form" => "users#login_form"
+  get "users/:id/likes" => "users#likes"
   post "login" => "users#login"
   post "logout" => "users#logout"
-  get "users/:id/likes" => "users#likes"
+  post "users/:id/update" => "users#update"
+  post "users/create" => "users#create"
+  post "users/:id/action" => "users#action"
+  post 'users/:id/home' => 'users#home'
+  post 'users/:id/media' => 'users#media'
 
 #likes　by Motoya#
   post "likes/:post_id/create" => "likes#create"

@@ -88,4 +88,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def action
+    @posts = Post.where(user_id: params[:id])
+    @boards = Board.where(user_id: params[:id])
+    @all_items = @posts + @boards 
+    @all_items.sort_by!{|a| a[:created_at]}.reverse!
+  end
+
+  def home
+
+    @user = User.find_by(id: params[:id])
+
+  end
+
 end

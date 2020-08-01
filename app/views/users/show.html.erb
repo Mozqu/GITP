@@ -20,7 +20,7 @@
         <div class="user_info">
           <p>name: <%= @user.name %></p>
           <p>id: <%= @user.id %></p>
-          <p>フォロー <%= @user.follow_count %> フォロワー <%= @user.follower_count %></p>
+          <p>フォロー中 <%= @user.follow_count %> フォロワー <%= @user.follower_count %></p>
           <div class="introduce">
             <p>はじめまして</p>
           </div>
@@ -36,18 +36,24 @@
 
     </div>
     <div class="users-show-menubar item">
+      <%= link_to "/users/#{@user.id}/home", method: :post, remote: true do %>
+      <div class="menu-icon">
+        <div class="menu-icon-selected"></div>
+        <span>ホーム</span>
+      </div>
+      <% end %>
+      <%= link_to "/users/#{@user.id}/action", method: :post, remote: true do %>
       <div class="menu-icon">
         <div class="menu-icon-selected"></div>
         <span>アクション</span>
       </div>
-      <div class="menu-icon">
-        <div class="menu-icon-selected"></div>
-        <span>投稿</span>
-      </div>
+      <% end %>
+      <%= link_to "users/#{@user.id}/media", method: :post, remote: true do %>
       <div class="menu-icon">
         <div class="menu-icon-selected"></div>
         <span>メディア</span>
       </div>
+      <% end %>
     </div>
 
     <div id='show-center'>

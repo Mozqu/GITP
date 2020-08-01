@@ -1,0 +1,141 @@
+<% all_items.each do |item| %>
+<% if item.table_name == 'posts' %>
+<div class="item">
+  <div class="post-item">
+    <div class="post-top">
+      <%= link_to("/users/#{item.user_id}",{class: "user-image-link"}) do %>
+      <div class="user-image-container">
+        <div class="user-image-blank">
+          <img class="user-image" src="<%= "/user_images/#{item.user.image_name}" %>">
+        </div>
+      </div>
+      <% end %>
+      <object><p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p></object>
+    </div>
+    <div class="post-main">
+      <div class="post-images">
+        <% if item.image_name1 %>
+
+        <img src="<%= "/post_images/#{item.image_name1}" %>">
+        <% end %>
+        <% if item.image_name2 %>
+        <img src="<%= "/post_images/#{item.image_name2}" %>">
+        <% end %>
+        <% if item.image_name3 %>
+        <img src="<%= "/post_images/#{item.image_name3}" %>">
+        <% end %>
+        <% if item.image_name4 %>
+        <img src="<%= "/post_images/#{item.image_name4}" %>">
+        <% end %>
+      </div>
+      <div class="post-sentence">
+        <p1><%= item.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p1>
+        <% if item.content %>
+        <p><%= item.content %></p>
+        <% end %>
+        <% if item.post_tags %>
+        <div class="post-tags">
+          <%= item.post_tags %>
+        </div>
+        <% end %>
+      </div>
+      <div class="item-open">
+        <p>開く</p>
+      </div>
+    </div>
+    <div class="post-bottom">
+      <div id="like-<%= item.id %>">
+        <%= render partial: "posts/like", locals: { item: item } %>
+      </div>
+      <span class="fa fa-comment"></span>
+    </div>
+
+  </div><!-- post-itam -->
+
+</div>
+<% elsif item.table_name == 'boards' %>
+<div class="item">
+  <div class="board-item">
+  <div class="board-top">
+    <%= link_to("/users/#{item.user_id}",{class: "user-image-link"}) do %>
+    <div class="user-image-container">
+      <div class="user-image-blank">
+        <img class="user-image" src="<%= "/user_images/#{item.user.image_name}" %>">
+      </div>
+    </div>
+    <% end %>
+
+      <p><%= link_to("#{item.user.name}", "/users/#{item.user_id}") %> </p>
+
+  </div>
+  <%= link_to "/boards/#{item.id}" do %>
+  <div class="board-middle">
+    <p><%= item.content %></p>
+  </div>
+  <% if item.image_name1 %>
+  <div class="board-images">
+    <img src="<%= "/board_images/#{item.image_name1}" %>">
+  </div>
+  <% end %>
+  <% end %>
+  <div class="board-bottom">
+    <div id="board-like-<%= item.id %>" class="up-down">
+      <%= render partial: "boards/board_like", locals: { board: item } %>
+    </div>
+    <div class="reponses-count">
+      <span class="far fa-comment"></span>
+      <p><%= item.responses.count %></p>
+    </div>
+
+  </div>
+
+  <div class="unshow">
+    <% item.responses.each do |response| %>
+
+    <div class="response-item">
+
+      <div class="response-top">
+        <object>
+          <%= link_to("/users/#{response.user_id}",{class: "user-image-link"}) do %>
+          <img class="user-image" src="<%= "/user_images/#{response.user.image_name}" %>">
+          <% end %>
+        </object>
+        <object><p><%= link_to("#{response.user.name}", "/users/#{response.user_id}") %> </p></object>
+        <p1><%= response.created_at %></p1>
+      </div>
+      <!--
+      <div class="response-images">
+        <% if response.image_name1 %>
+        <img src="<%= "/post_images/#{response.image_name1}" %>">
+        <% end %>
+        <% if response.image_name2 %>
+        <img src="<%= "/post_images/#{response.image_name2}" %>">
+        <% end %>
+        <% if response.image_name3 %>
+        <img src="<%= "/post_images/#{response.image_name3}" %>">
+        <% end %>
+        <% if response.image_name4 %>
+        <img src="<%= "/post_images/#{response.image_name4}" %>">
+        <% end %>
+      </div>
+      -->
+      <div class="response-sentence">
+
+        <p><%= response.content %></p>
+      </div>
+      <div class="response-bottom">
+        <span class="fa fa-comment"></span>
+      </div>
+
+    </div>
+    <% if response == item.responses[4] %>
+    <% break %>
+    <% end %>
+
+    <% end %>
+  </div>
+
+  </div>
+</div>
+<% end %>
+<% end %>
